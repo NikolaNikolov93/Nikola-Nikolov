@@ -1,0 +1,11 @@
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: var(--nav-container-background-color);
+}
+.navLinks {
+  display: flex;
+  gap: 1em;
+}

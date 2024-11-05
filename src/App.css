@@ -1,0 +1,13 @@
+@import url("../styles/variables.css");
+
+html {
+  background-color: var(--site-background-color);
+  position: relative;
+}
+.main {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.active-modal {
+  overflow-y: hidden;
+}
