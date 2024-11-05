@@ -5,13 +5,13 @@ const NavigationLinks = () => {
   return (
     <ul className={styles.navLinks}>
       <li>
-        <Link to="/about">About</Link>
+        <Link to="/Home">Home</Link>
       </li>
       <li>
         <Link to="/projects">Projects</Link>
       </li>
       <li>
-        <Link to="/contacts">Contacts</Link>
+        <Link to="/About">About</Link>
       </li>
     </ul>
   );

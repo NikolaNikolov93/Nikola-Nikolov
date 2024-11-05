@@ -1,11 +1,18 @@
+import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 import NavigationLinks from "./NavigationLinks";
 
 const Navigation = () => {
   return (
-    <nav className={styles.navigation}>
-      <NavigationLinks />
-    </nav>
+    <div className="navigation-container">
+      <nav className={styles.navigation}>
+        <div className={styles.logo}>Nikola Nikolov</div>
+        <NavigationLinks />
+        <Link to="/contacts" className={styles.contacts}>
+          Let's talk
+        </Link>
+      </nav>
+    </div>
   );
 };
 
