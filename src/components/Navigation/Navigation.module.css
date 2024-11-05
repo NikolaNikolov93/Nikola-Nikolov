@@ -1,11 +1,18 @@
+@import url("../../../styles/variables.css");
 .navigation {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
-  background-color: var(--nav-container-background-color);
+  padding: 1em;
+  border: 1px solid white;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 .navLinks {
   display: flex;
   gap: 1em;
+}
+.logo,
+.contacts {
+  color: var(--active-links-color);
 }
