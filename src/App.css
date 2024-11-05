@@ -2,6 +2,7 @@
 
 html {
   background-color: var(--site-background-color);
+  color: var(--site-font-color);
   position: relative;
 }
 .main {
