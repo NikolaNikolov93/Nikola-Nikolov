@@ -4,7 +4,7 @@ import { lightTheme, darkTheme } from "../styles/theme/theme";
 import styled from "styled-components";
 import Home from "./pages/home/Home";
 import Navigation from "./components/navigation/Navigation";
-import { useState } from "react";
+import { useTheme } from "./context/ThemeContext";
 
 const AppContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
@@ -13,14 +13,11 @@ const AppContainer = styled.div`
 `;
 
 function App() {
-  const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const toggleTheme = () => setIsDarkTheme(!isDarkTheme);
+  const { isDarkTheme } = useTheme();
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <AppContainer>
-        <button onClick={toggleTheme}>
-          Toggle to {isDarkTheme ? "Light" : "Dark"} theme
-        </button>
         <Navigation />
         <section className="main">
           <Routes>
