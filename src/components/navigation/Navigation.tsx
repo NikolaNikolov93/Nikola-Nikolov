@@ -7,15 +7,11 @@ const Navigation = () => {
     <StyledNavigation>
       <ThemeSwitcher />
       <StyledList>
-        <li>
-          <StyledLink to={"/home"}>Home</StyledLink>
-        </li>
-        <li>
-          <StyledLink to={"/about"}>About</StyledLink>
-        </li>
-        <li>
-          <StyledLink to={"/contacts"}>Contacts</StyledLink>
-        </li>
+        <StyledLink to={"/home"}>Home</StyledLink>
+
+        <StyledLink to={"/about"}>About</StyledLink>
+
+        <StyledLink to={"/contacts"}>Contacts</StyledLink>
       </StyledList>
     </StyledNavigation>
   );
@@ -25,18 +21,24 @@ export default Navigation;
 
 const StyledNavigation = styled.nav`
   padding: 1em;
-  border: 1px solid black;
   box-shadow: 5px 5px 5px black;
   display: flex;
+  flex-wrap: wrap;
   margin-bottom: 1em;
+  align-items: center;
 `;
 const StyledList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
   gap: 1em;
+  align-items: center;
+  padding: 1em;
+  margin: 0;
 `;
 const StyledLink = styled(Link)`
   color: ${({ theme }) => theme.accentPrimary};
   &:hover {
+    text-decoration: none;
     color: ${({ theme }) => theme.accentSecondary};
   }
 `;
