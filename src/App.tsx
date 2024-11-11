@@ -5,6 +5,9 @@ import styled from "styled-components";
 import Home from "./pages/home/Home";
 import Navigation from "./components/navigation/Navigation";
 import { useTheme } from "./context/ThemeContext";
+import MainPageContainer from "./components/mainPageCointainer/mainPageCointainer";
+import About from "./pages/about/About";
+import Contacts from "./pages/contacts/Contacts";
 
 const AppContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
@@ -19,13 +22,13 @@ function App() {
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <AppContainer>
         <Navigation />
-        <section className="main">
+        <MainPageContainer>
           <Routes>
             <Route path={"/home"} element={<Home />} />
-            {/* <Route path="/projects" /> */}
-            {/* <Route path="/about" /> */}
+            <Route path="/about" element={<About />} />
+            <Route path="/contacts" element={<Contacts />} />
           </Routes>
-        </section>
+        </MainPageContainer>
       </AppContainer>
     </ThemeProvider>
   );
