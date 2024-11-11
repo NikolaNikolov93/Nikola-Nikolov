@@ -1,31 +1,47 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
+import { useTheme } from "../../context/ThemeContext";
+import { lightTheme, darkTheme } from "../../../styles/theme/theme";
 
+interface StyledNavigationContainerProps {
+  $isDarkTheme: boolean;
+}
 const Navigation = () => {
+  const { isDarkTheme } = useTheme();
+
   return (
-    <StyledNavigation>
-      <ThemeSwitcher />
-      <StyledList>
-        <StyledLink to={"/home"}>Home</StyledLink>
+    <StyledNavigationContainer $isDarkTheme={isDarkTheme}>
+      <StyledNavigation>
+        <StyledList>
+          <StyledLink to={"/home"}>Home</StyledLink>
 
-        <StyledLink to={"/about"}>About</StyledLink>
+          <StyledLink to={"/about"}>About</StyledLink>
 
-        <StyledLink to={"/contacts"}>Contacts</StyledLink>
-      </StyledList>
-    </StyledNavigation>
+          <StyledLink to={"/contacts"}>Contacts</StyledLink>
+        </StyledList>
+        <ThemeSwitcher />
+      </StyledNavigation>
+    </StyledNavigationContainer>
   );
 };
 
 export default Navigation;
 
+const StyledNavigationContainer = styled.section<StyledNavigationContainerProps>`
+  background-color: ${({ $isDarkTheme }) =>
+    $isDarkTheme ? darkTheme.divider : lightTheme.divider};
+  margin: 0;
+`;
+
 const StyledNavigation = styled.nav`
   padding: 1em;
-  box-shadow: 5px 5px 5px black;
+  max-width: 1440px;
+  margin: auto;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1em;
   align-items: center;
+  justify-content: space-between;
 `;
 const StyledList = styled.ul`
   display: flex;
@@ -36,9 +52,9 @@ const StyledList = styled.ul`
   margin: 0;
 `;
 const StyledLink = styled(Link)`
-  color: ${({ theme }) => theme.accentPrimary};
+  color: ${({ theme }) => theme.textPrimary};
   &:hover {
     text-decoration: none;
-    color: ${({ theme }) => theme.accentSecondary};
+    color: ${({ theme }) => theme.textSecondary};
   }
 `;
