@@ -23,7 +23,8 @@ interface ThemeProps {
 const Switch = styled.button<ThemeProps>`
   width: 60px;
   height: 30px;
-  background-color: ${({ $isDarkTheme }) => ($isDarkTheme ? "#333" : "#ddd")};
+  background-color: ${({ $isDarkTheme }) =>
+    $isDarkTheme ? "#858585" : "#afafaf"};
   border-radius: 15px;
   border: none;
   display: flex;
