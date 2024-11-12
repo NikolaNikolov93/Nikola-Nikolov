@@ -9,7 +9,7 @@ export const lightTheme: DefaultTheme = {
   divider: "#E0E0E0", // Light gray divider for structure
 };
 export const darkTheme: DefaultTheme = {
-  background: "#1E1E2E", // Dark blue-gray background
+  background: "#10182d", // Dark blue-gray background
   textPrimary: "#EAEAEA", // Soft off-white for primary text
   textSecondary: "#B0B0B0", // Light gray for secondary text
   accentPrimary: "#4A90E2", // Soft, calming blue for accents
