@@ -7,6 +7,48 @@ import Navigation from "./components/navigation/Navigation";
 import { useTheme } from "./context/ThemeContext";
 import About from "./pages/about/About";
 import Contacts from "./pages/contacts/Contacts";
+import { useState } from "react";
+import Sidebar from "./components/sidebar/Sidebar";
+
+type SideBaroButtonProps = {
+  onClick: () => void;
+  $isOpen: boolean;
+};
+
+function App() {
+  const { isDarkTheme } = useTheme();
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+    console.log(isSidebarOpen);
+  };
+  return (
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      <AppContainer>
+        <MainSection>
+          <AppStaticSection>
+            <Navigation />
+          </AppStaticSection>
+          <AppDynamicSection>
+            <Routes>
+              <Route path={"/"} element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contacts" element={<Contacts />} />
+            </Routes>
+          </AppDynamicSection>
+        </MainSection>
+        <SidebarButton onClick={toggleSidebar} $isOpen={isSidebarOpen}>
+          ☰
+        </SidebarButton>
+        <Sidebar
+          $isOpen={isSidebarOpen}
+          toggleSidebar={toggleSidebar}
+        ></Sidebar>
+      </AppContainer>
+    </ThemeProvider>
+  );
+}
+export default App;
 
 const AppContainer = styled.div`
   background-color: ${({ theme }) => theme.background};
@@ -34,33 +76,39 @@ const AppStaticSection = styled.section`
   top: 0;
   width: 30vw;
   overflow: hidden;
-  padding: 4em 2em;
+  padding: 2em;
+  @media (max-width: 800px) {
+    text-align: start;
+    h1,
+    h2,
+    h4 {
+      font-size: 1em;
+    }
+  }
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 const AppDynamicSection = styled.section`
   width: 70vw;
-  padding: 4em 2em;
+  padding: 2em;
+  @media (max-width: 600px) {
+    width: 100vw;
+  }
 `;
-function App() {
-  const { isDarkTheme } = useTheme();
+const SidebarButton = styled.button<SideBaroButtonProps>`
+  display: none;
+  position: fixed;
+  top: 1em;
+  left: 1em;
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  z-index: 1001;
 
-  return (
-    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <AppContainer>
-        <MainSection>
-          <AppStaticSection>
-            <Navigation />
-          </AppStaticSection>
-          <AppDynamicSection>
-            <Routes>
-              <Route path={"/"} element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contacts" element={<Contacts />} />
-            </Routes>
-          </AppDynamicSection>
-        </MainSection>
-      </AppContainer>
-    </ThemeProvider>
-  );
-}
-
-export default App;
+  @media (max-width: 600px) {
+    display: ${({ $isOpen }) => ($isOpen ? "none" : "block")};
+    color: ${({ theme }) => theme.textPrimary};
+  }
+`;

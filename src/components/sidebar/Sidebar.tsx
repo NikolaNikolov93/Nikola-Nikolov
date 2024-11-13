@@ -1,29 +1,32 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 import { CiLinkedin } from "react-icons/ci";
+import { FaGithub, FaFacebook } from "react-icons/fa";
 import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
-import { FaGithub } from "react-icons/fa";
-import { FaFacebook } from "react-icons/fa";
 
-const Navigation = () => {
+type SidebarProps = {
+  $isOpen: boolean;
+  toggleSidebar: () => void;
+};
+
+const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
   return (
-    <StyledNavigation>
-      <ThemeSwitcher />
-      <Bio>
-        <h1>Nikola Nikolov</h1>
-        <h3>Frontend Developer</h3>
-        <h4>I am ready to bring creativity and functionality to the web.</h4>
-      </Bio>
+    <SidebarContainer $isOpen={$isOpen}>
+      <CloseButton onClick={toggleSidebar}>✕</CloseButton>
       <StyledList>
-        <StyledLink to={"/"}>
+        <ThemeSwitcherContainer>
+          <ThemeSwitcher />
+        </ThemeSwitcherContainer>
+
+        <StyledLink to="/" onClick={toggleSidebar}>
           <DecorationLine />
           <p>Home</p>
         </StyledLink>
-        <StyledLink to={"/about"}>
+        <StyledLink to="/about" onClick={toggleSidebar}>
           <DecorationLine />
           <p>About</p>
         </StyledLink>
-        <StyledLink to={"/contacts"}>
+        <StyledLink to="/contacts" onClick={toggleSidebar}>
           <DecorationLine />
           <p>Contacts</p>
         </StyledLink>
@@ -57,87 +60,85 @@ const Navigation = () => {
           </a>
         </li>
       </StyledSocialList>
-    </StyledNavigation>
+    </SidebarContainer>
   );
 };
 
-export default Navigation;
+export default Sidebar;
 
-const Bio = styled.div`
+const SidebarContainer = styled.nav<{ $isOpen: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.background};
+  color: ${({ theme }) => theme.textPrimary};
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
-  align-items: start;
-
-  h1 {
-    color: ${({ theme }) => theme.accentSecondary};
-  }
-  h3 {
-    color: ${({ theme }) => theme.textPrimary};
-  }
-  h4 {
-    color: ${({ theme }) => theme.textSecondary};
-  }
-  p {
-    width: 100%;
-    height: 100%;
-    background-image: url("/profile-pic.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
+  align-items: flex-start;
+  padding: 2em 1em;
+  transform: ${({ $isOpen }) =>
+    $isOpen ? "translateX(0)" : "translateX(-100%)"};
+  transition: transform 0.3s ease;
+  z-index: 1000;
 `;
 
-const StyledNavigation = styled.nav`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  height: 100vh;
+const CloseButton = styled.button`
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 1.5em;
+  color: ${({ theme }) => theme.textPrimary};
+  cursor: pointer;
+`;
+const ThemeSwitcherContainer = styled.div`
+  padding: 1em;
 `;
 const StyledList = styled.ul`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   gap: 1em;
-  align-items: start;
-  padding: 1em;
-  margin: 0;
   font-size: 1.3em;
 `;
+
 const StyledLink = styled(NavLink)`
   color: ${({ theme }) => theme.textSecondary};
   transition: color 0.3s ease, transform 0.3s ease;
   position: relative;
+
   p {
-    margin: 0; /* Remove default margins */
-    padding-left: 1em; /* Add space between the text and line */
-    position: relative; /* Ensure it's the reference for the line */
+    margin: 0;
+    padding-left: 1em;
+    position: relative;
   }
 
   &.active,
   &:hover {
-    text-decoration: none;
     color: ${({ theme }) => theme.textPrimary};
     transform: translateX(20%);
   }
 `;
+
 const StyledSocialList = styled.ul`
   display: flex;
-  padding: 0.5em;
   gap: 1em;
-  align-items: center;
+  margin-top: auto;
   font-size: 1.8em;
+
   a {
     color: ${({ theme }) => theme.accentSecondary};
   }
+
   li {
     transition: transform 0.3s ease;
   }
+
   li:hover {
     transform: scale(1.5);
   }
 `;
+
 const DecorationLine = styled.div`
   position: absolute;
   left: 0;
@@ -147,10 +148,7 @@ const DecorationLine = styled.div`
   background-color: ${({ theme }) => theme.textPrimary};
   transition: width 0.3s ease, background-color 0.3s ease;
 
-  ${StyledLink}:hover & {
-    width: 100%;
-    background-color: ${({ theme }) => theme.textSecondary};
-  }
+  ${StyledLink}:hover &,
   ${StyledLink}.active & {
     width: 100%;
     background-color: ${({ theme }) => theme.textSecondary};
