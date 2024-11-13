@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Home = () => {
+const Home: React.FC = () => {
   return (
     <HomeContentContainer>
       <HomeContainerElement>
