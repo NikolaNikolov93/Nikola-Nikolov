@@ -11,4 +11,7 @@ _Firebase_<br>
 
 ## To do!
 
+Add about page.
+Add projects page.
+
 ## Things to fix!
