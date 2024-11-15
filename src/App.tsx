@@ -9,6 +9,7 @@ import About from "./pages/about/About";
 import Contacts from "./pages/contacts/Contacts";
 import { useState } from "react";
 import Sidebar from "./components/sidebar/Sidebar";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 type SideBaroButtonProps = {
   onClick: () => void;
@@ -38,7 +39,7 @@ function App() {
           </AppDynamicSection>
         </MainSection>
         <SidebarButton onClick={toggleSidebar} $isOpen={isSidebarOpen}>
-          ☰
+          <RxHamburgerMenu />
         </SidebarButton>
         <Sidebar
           $isOpen={isSidebarOpen}
@@ -70,6 +71,7 @@ const MainSection = styled.section`
   height: 100vh;
   display: flex;
   overflow-y: auto;
+  padding: 2em;
 `;
 const AppStaticSection = styled.section`
   position: sticky;
@@ -105,7 +107,6 @@ const SidebarButton = styled.button<SideBaroButtonProps>`
   border: none;
   font-size: 2em;
   cursor: pointer;
-  z-index: 1001;
 
   @media (max-width: 600px) {
     display: ${({ $isOpen }) => ($isOpen ? "none" : "block")};
