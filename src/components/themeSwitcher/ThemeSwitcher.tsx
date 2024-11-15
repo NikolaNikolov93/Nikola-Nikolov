@@ -2,10 +2,10 @@
 import { FaMoon, FaSun } from "react-icons/fa";
 
 //Import custom hook
-import { useTheme } from "../../context/ThemeContext";
 
 //Import sytled components
 import { Slider, Switch } from "./ThemeSwitcher.styles";
+import { useTheme } from "../../lib/hooks/useTheme";
 
 /**
  *

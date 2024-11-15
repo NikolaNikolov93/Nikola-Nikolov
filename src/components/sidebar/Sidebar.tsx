@@ -16,7 +16,7 @@ import {
   StyledSocialList,
   ThemeSwitcherContainer,
 } from "./Sidebar.styles";
-import { SidebarProps } from "../../lib/types";
+import { SidebarProps } from "../../lib/types/types";
 
 /**
  *

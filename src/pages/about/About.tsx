@@ -1,4 +1,4 @@
-const About = () => {
+const About: React.FC = () => {
   return (
     <div>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui asperiores,

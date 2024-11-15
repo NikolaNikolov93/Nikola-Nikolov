@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ThemeProps } from "../../lib/types";
+import { ThemeProps } from "../../lib/types/types";
 
 export const Switch = styled.button<ThemeProps>`
   width: 60px;
@@ -19,7 +19,7 @@ export const Slider = styled.div<ThemeProps>`
   width: 26px;
   height: 26px;
   background-color: ${({ $isDarkTheme }) =>
-    $isDarkTheme ? "#f1c40f" : "#2c3e50"};
+    $isDarkTheme ? "#F7F7F7" : "#10182d"};
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -28,6 +28,6 @@ export const Slider = styled.div<ThemeProps>`
   top: 2px;
   left: ${({ $isDarkTheme }) => ($isDarkTheme ? "32px" : "2px")};
   transition: left 0.3s ease;
-  color: ${({ $isDarkTheme }) => ($isDarkTheme ? "#333" : "#ddd")};
+  color: ${({ $isDarkTheme }) => ($isDarkTheme ? "#FF8C42" : "#FF6347")};
   font-size: 16px;
 `;

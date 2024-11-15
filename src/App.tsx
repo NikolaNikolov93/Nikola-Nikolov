@@ -1,28 +1,50 @@
+//React imports
 import { Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "../styles/theme/theme";
-import styled from "styled-components";
-import Home from "./pages/home/Home";
-import Navigation from "./components/navigation/Navigation";
-import { useTheme } from "./context/ThemeContext";
-import About from "./pages/about/About";
-import Contacts from "./pages/contacts/Contacts";
 import { useState } from "react";
-import Sidebar from "./components/sidebar/Sidebar";
+
+//React iconst imports
 import { RxHamburgerMenu } from "react-icons/rx";
 
-type SideBaroButtonProps = {
-  onClick: () => void;
-  $isOpen: boolean;
-};
+//Styled components imports
+import { ThemeProvider } from "styled-components";
+import {
+  AppContainer,
+  AppDynamicSection,
+  AppStaticSection,
+  MainSection,
+  SidebarButton,
+} from "./App.styles";
 
+//Theme imports
+import { lightTheme, darkTheme } from "../styles/theme/theme";
+import { useTheme } from "./lib/hooks/useTheme";
+
+//Pages imports
+import Home from "./pages/home/Home";
+import About from "./pages/about/About";
+import Contacts from "./pages/contacts/Contacts";
+
+//Components imports
+import Navigation from "./components/navigation/Navigation";
+import Sidebar from "./components/sidebar/Sidebar";
+
+/**
+ *
+ * @returns The App component that represents the whole page
+ */
 function App() {
+  //Sets the state of the theme(Dark by default)
   const { isDarkTheme } = useTheme();
+
+  //Sets the state for the mobile Sidebar(Closed by default)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  //Toggles between the Sidebar states
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
     console.log(isSidebarOpen);
   };
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <AppContainer>
@@ -50,66 +72,3 @@ function App() {
   );
 }
 export default App;
-
-const AppContainer = styled.div`
-  background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.textPrimary};
-  /* Hide scrollbar for Webkit browsers */
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for Firefox */
-  scrollbar-width: none;
-
-  /* Hide scrollbar for older Edge and IE */
-  -ms-overflow-style: none;
-`;
-const MainSection = styled.section`
-  max-width: 1440px;
-  margin: auto;
-  height: 100vh;
-  display: flex;
-  overflow-y: auto;
-  padding: 2em;
-`;
-const AppStaticSection = styled.section`
-  position: sticky;
-  top: 0;
-  width: 30vw;
-  overflow: hidden;
-  padding: 2em;
-  @media (max-width: 800px) {
-    text-align: start;
-    h1,
-    h2,
-    h4 {
-      font-size: 1em;
-    }
-  }
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
-const AppDynamicSection = styled.section`
-  width: 70vw;
-  padding: 2em;
-  @media (max-width: 600px) {
-    width: 100vw;
-  }
-`;
-const SidebarButton = styled.button<SideBaroButtonProps>`
-  display: none;
-  position: fixed;
-  top: 1em;
-  left: 1em;
-  background: none;
-  border: none;
-  font-size: 2em;
-  cursor: pointer;
-
-  @media (max-width: 600px) {
-    display: ${({ $isOpen }) => ($isOpen ? "none" : "block")};
-    color: ${({ theme }) => theme.textPrimary};
-  }
-`;
