@@ -6,8 +6,6 @@ html {
 
 body {
   font-family: Arial, sans-serif; /* Set a default sans-serif font */
-  line-height: 1.6;
-  font-weight: 400;
 }
 
 /* Headings */
@@ -44,29 +42,15 @@ h6 {
   font-size: 0.875rem;
 }
 
-/* Paragraphs */
-p {
-  margin-bottom: 1em;
-}
-
-/* Links */
 a {
   text-decoration: none;
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 
-/* Lists */
 ul,
 ol {
-  margin: 1em 0;
-  padding-left: 1.5em;
   list-style-type: none;
-}
-
-ul li,
-ol li {
-  margin-bottom: 0.5em;
 }
