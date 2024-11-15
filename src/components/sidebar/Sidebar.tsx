@@ -16,12 +16,7 @@ import {
   StyledSocialList,
   ThemeSwitcherContainer,
 } from "./Sidebar.styles";
-
-//Sidebar props declaration
-type SidebarProps = {
-  $isOpen: boolean;
-  toggleSidebar: () => void;
-};
+import { SidebarProps } from "../../lib/types";
 
 /**
  *
