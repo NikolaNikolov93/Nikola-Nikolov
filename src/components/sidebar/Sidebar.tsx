@@ -1,23 +1,43 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+//React icons import
 import { CiLinkedin } from "react-icons/ci";
 import { FaGithub, FaFacebook } from "react-icons/fa";
+import { AiOutlineCloseSquare } from "react-icons/ai";
+
+//Theme switcher import
 import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
 
+//Styled components import
+import {
+  CloseButton,
+  DecorationLine,
+  SidebarContainer,
+  StyledLink,
+  StyledList,
+  StyledSocialList,
+  ThemeSwitcherContainer,
+} from "./Sidebar.styles";
+
+//Sidebar props declaration
 type SidebarProps = {
   $isOpen: boolean;
   toggleSidebar: () => void;
 };
 
+/**
+ *
+ * @param param0 isOpen is a boolean that gives info weather the sidebar is open and is used for stylization. toggleSidebar is toggle function that switches the state.
+ * @returns React functional component
+ */
 const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
   return (
     <SidebarContainer $isOpen={$isOpen}>
-      <CloseButton onClick={toggleSidebar}>✕</CloseButton>
+      <CloseButton onClick={toggleSidebar}>
+        <AiOutlineCloseSquare />
+      </CloseButton>
       <StyledList>
         <ThemeSwitcherContainer>
           <ThemeSwitcher />
         </ThemeSwitcherContainer>
-
         <StyledLink to="/" onClick={toggleSidebar}>
           <DecorationLine />
           <p>Home</p>
@@ -65,92 +85,3 @@ const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
 };
 
 export default Sidebar;
-
-const SidebarContainer = styled.nav<{ $isOpen: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100vh;
-  background-color: ${({ theme }) => theme.background};
-  color: ${({ theme }) => theme.textPrimary};
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 2em 1em;
-  transform: ${({ $isOpen }) =>
-    $isOpen ? "translateX(0)" : "translateX(-100%)"};
-  transition: transform 0.3s ease;
-  z-index: 1000;
-`;
-
-const CloseButton = styled.button`
-  align-self: flex-end;
-  background: none;
-  border: none;
-  font-size: 1.5em;
-  color: ${({ theme }) => theme.textPrimary};
-  cursor: pointer;
-`;
-const ThemeSwitcherContainer = styled.div`
-  padding: 1em;
-`;
-const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-  font-size: 1.3em;
-`;
-
-const StyledLink = styled(NavLink)`
-  color: ${({ theme }) => theme.textSecondary};
-  transition: color 0.3s ease, transform 0.3s ease;
-  position: relative;
-
-  p {
-    margin: 0;
-    padding-left: 1em;
-    position: relative;
-  }
-
-  &.active,
-  &:hover {
-    color: ${({ theme }) => theme.textPrimary};
-    transform: translateX(20%);
-  }
-`;
-
-const StyledSocialList = styled.ul`
-  display: flex;
-  gap: 1em;
-  margin-top: auto;
-  font-size: 1.8em;
-
-  a {
-    color: ${({ theme }) => theme.accentSecondary};
-  }
-
-  li {
-    transition: transform 0.3s ease;
-  }
-
-  li:hover {
-    transform: scale(1.5);
-  }
-`;
-
-const DecorationLine = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 1px;
-  background-color: ${({ theme }) => theme.textPrimary};
-  transition: width 0.3s ease, background-color 0.3s ease;
-
-  ${StyledLink}:hover &,
-  ${StyledLink}.active & {
-    width: 100%;
-    background-color: ${({ theme }) => theme.textSecondary};
-  }
-`;
