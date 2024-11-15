@@ -1,19 +1,28 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
-import { CiLinkedin } from "react-icons/ci";
+//Import ThemeSwitcher component that handles the change from Light to Dark theme.
 import ThemeSwitcher from "../themeSwitcher/ThemeSwitcher";
+
+//Import React icons.
+import { CiLinkedin } from "react-icons/ci";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebook } from "react-icons/fa";
 
-const Navigation = () => {
+//Import styled components.
+import {
+  StyledNavigation,
+  StyledList,
+  StyledLink,
+  StyledSocialList,
+  DecorationLine,
+} from "./Navigation.styles";
+
+/**
+ *
+ * @returns React functional component --> Navigation for wide screens.
+ */
+const Navigation: React.FC = () => {
   return (
     <StyledNavigation>
       <ThemeSwitcher />
-      <Bio>
-        <h1>Nikola Nikolov</h1>
-        <h3>Frontend Developer</h3>
-        <h4>I am ready to bring creativity and functionality to the web.</h4>
-      </Bio>
       <StyledList>
         <StyledLink to={"/"}>
           <DecorationLine />
@@ -62,97 +71,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
-const Bio = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-  align-items: start;
-
-  h1 {
-    color: ${({ theme }) => theme.accentSecondary};
-  }
-  h3 {
-    color: ${({ theme }) => theme.textPrimary};
-  }
-  h4 {
-    color: ${({ theme }) => theme.textSecondary};
-  }
-  p {
-    width: 100%;
-    height: 100%;
-    background-image: url("/profile-pic.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-  }
-`;
-
-const StyledNavigation = styled.nav`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  justify-content: space-between;
-  height: 100vh;
-`;
-const StyledList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  gap: 1em;
-  align-items: start;
-  padding: 1em;
-  margin: 0;
-  font-size: 1.3em;
-`;
-const StyledLink = styled(NavLink)`
-  color: ${({ theme }) => theme.textSecondary};
-  transition: color 0.3s ease, transform 0.3s ease;
-  position: relative;
-  p {
-    margin: 0; /* Remove default margins */
-    padding-left: 1em; /* Add space between the text and line */
-    position: relative; /* Ensure it's the reference for the line */
-  }
-
-  &.active,
-  &:hover {
-    text-decoration: none;
-    color: ${({ theme }) => theme.textPrimary};
-    transform: translateX(20%);
-  }
-`;
-const StyledSocialList = styled.ul`
-  display: flex;
-  padding: 0.5em;
-  gap: 1em;
-  align-items: center;
-  font-size: 1.8em;
-  a {
-    color: ${({ theme }) => theme.accentSecondary};
-  }
-  li {
-    transition: transform 0.3s ease;
-  }
-  li:hover {
-    transform: scale(1.5);
-  }
-`;
-const DecorationLine = styled.div`
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0;
-  height: 1px;
-  background-color: ${({ theme }) => theme.textPrimary};
-  transition: width 0.3s ease, background-color 0.3s ease;
-
-  ${StyledLink}:hover & {
-    width: 100%;
-    background-color: ${({ theme }) => theme.textSecondary};
-  }
-  ${StyledLink}.active & {
-    width: 100%;
-    background-color: ${({ theme }) => theme.textSecondary};
-  }
-`;
