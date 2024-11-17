@@ -20,3 +20,25 @@ export type ThemeContextType = {
   isDarkTheme: boolean;
   toggleTheme: () => void;
 };
+
+//Certificate type
+export type CertificateType = {
+  certificateImg: string;
+  dateFinished: string;
+  grade: number;
+  issuedBy: string;
+  name: string;
+  id: string;
+};
+
+//About section ---> StyledDiv props
+export type $StyledDivProps = {
+  $url: string;
+};
+
+//CertificateCardProps in CertificateCard component
+export type CertificateCardProps = {
+  id: string;
+  name: string;
+  url: string;
+};
