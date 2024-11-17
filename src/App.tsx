@@ -27,6 +27,7 @@ import Contacts from "./pages/contacts/Contacts";
 //Components imports
 import Navigation from "./components/navigation/Navigation";
 import Sidebar from "./components/sidebar/Sidebar";
+import Certificate from "./pages/certificate/Certificate";
 
 /**
  *
@@ -42,7 +43,6 @@ function App() {
   //Toggles between the Sidebar states
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-    console.log(isSidebarOpen);
   };
 
   return (
@@ -56,6 +56,7 @@ function App() {
             <Routes>
               <Route path={"/"} element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/about/:name/:id" element={<Certificate />} />
               <Route path="/contacts" element={<Contacts />} />
             </Routes>
           </AppDynamicSection>
