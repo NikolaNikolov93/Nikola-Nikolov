@@ -1,7 +1,7 @@
 import { DefaultTheme } from "styled-components";
 
 export const lightTheme: DefaultTheme = {
-  background: "#F7F7F7", // Soft white-gray background
+  background: "#f0eded", // Soft white-gray background
   textPrimary: "#333333", // Dark gray for primary text
   textSecondary: "#555555", // Medium gray for secondary text
   accentPrimary: "#005FCC", // Bright blue, optimized for readability
