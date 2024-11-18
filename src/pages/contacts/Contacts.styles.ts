@@ -36,6 +36,7 @@ export const ContactsContainer = styled.section`
 export const ContactForm = styled.form`
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
   gap: 1em;
   max-width: 600px;
   margin: 0 auto;
@@ -43,6 +44,7 @@ export const ContactForm = styled.form`
   border: 1px solid #ccc;
   border-radius: 10px;
   flex-shrink: 1;
+  background-color: ${({ theme }) => theme.divider};
 `;
 
 export const Input = styled.input`
@@ -50,10 +52,9 @@ export const Input = styled.input`
   border: none;
   border-bottom: 1px solid #ccc;
   border-radius: 5px;
-  flex-basis: calc((100% - 1em) / 2);
   color: ${({ theme }) => theme.textPrimary};
-
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.divider};
+  border-color: ${({ theme }) => theme.textPrimary};
   @media (max-width: 600px) {
     flex-basis: 100%; /* Full width on smaller screens */
   }
@@ -64,13 +65,17 @@ export const Textarea = styled.textarea`
   font-size: 16px;
   border: none;
   border-bottom: 1px solid #ccc;
+  border-color: ${({ theme }) => theme.textPrimary};
   color: ${({ theme }) => theme.textPrimary};
-  background-color: ${({ theme }) => theme.background};
+  background-color: ${({ theme }) => theme.divider};
   height: 150px;
   resize: vertical;
   flex: 1 1 100%;
 `;
-
+export const ButtonWrapper = styled.div`
+  flex-basis: 100%;
+  text-align: center;
+`;
 export const Button = styled.button`
   padding: 10px 20px;
   font-size: 16px;
@@ -84,4 +89,7 @@ export const Button = styled.button`
   &:hover {
     background-color: #0056b3;
   }
+`;
+export const FormMessage = styled.p`
+  color: ${({ theme }) => theme.accentSecondary};
 `;
