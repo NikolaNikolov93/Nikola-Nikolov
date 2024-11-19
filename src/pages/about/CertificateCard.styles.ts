@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { $StyledDivProps } from "../../lib/types/types";
+import { motion } from "motion/react";
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
   flex-basis: calc((100% - 2 * 1em) / 3);
   transition: ease 0.4s;
   border-radius: 50px;
