@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const ContactsContainer = styled.section`
+  padding: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
