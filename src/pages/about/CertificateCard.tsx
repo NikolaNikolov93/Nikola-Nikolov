@@ -5,8 +5,9 @@ const CertificateCard: React.FC<CertificateCardProps> = ({ id, name, url }) => {
   return (
     <Card
       transition={{ duration: 1 }}
-      initial={{ opacity: 0, scale: 0.5 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
     >
       <StyledImgDiv $url={url}>
         <h3>{name}</h3>

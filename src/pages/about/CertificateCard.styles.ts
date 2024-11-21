@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 export const Card = styled(motion.div)`
   flex-basis: calc((100% - 2 * 1em) / 3);
   transition: ease 0.4s;
-  border-radius: 50px;
+  border-radius: 40px;
   overflow: hidden;
   @media (min-width: 100px) and (max-width: 767px) {
     flex-basis: calc(100%);
@@ -51,6 +51,7 @@ export const StyledImgDiv = styled.div<$StyledDivProps>`
     opacity: 0; /* Use opacity for smooth fade-in */
     transition: opacity 0.5s ease-in-out; /* Smooth transition for appearance */
     text-align: center;
+    border: none;
   }
 
   &::before {
