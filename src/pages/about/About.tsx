@@ -8,9 +8,10 @@ import {
   ListImg,
 } from "./About.styles";
 import CertificateCard from "./CertificateCard";
+import CertificateCardSkeleton from "./CertificateCardSkeleton";
 
 const About: React.FC = () => {
-  const courses = useFetchCertificates();
+  const { isPending, error, data, isFetching } = useFetchCertificates();
 
   return (
     <Wrapper>
@@ -95,8 +96,17 @@ const About: React.FC = () => {
           </ListItem>
         </ul>
       </AboutWrapper>
+      {isPending && <h2>Loading certificates...</h2>}
       <CertifcatesWrapper>
-        {courses.map((course) => (
+        {isPending && (
+          <>
+            <CertificateCardSkeleton />
+            <CertificateCardSkeleton />
+            <CertificateCardSkeleton />
+          </>
+        )}
+        {error && <p>Error</p>}
+        {data?.map((course) => (
           <CertificateCard
             key={course.id}
             id={course.id}

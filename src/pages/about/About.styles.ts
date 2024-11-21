@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.section`
   padding: 1em;
+  text-align: center;
 `;
 
 export const AboutWrapper = styled.div`
@@ -54,7 +55,7 @@ export const ListItem = styled(motion.li)`
 `;
 export const ListP = styled(motion.p)`
   flex-basis: calc((100% - 1em) / 2);
-  padding: 1em;
+  padding: 0 1em;
 `;
 export const ListImg = styled(motion.img)`
   flex-basis: calc((100% - 1em) / 2);
@@ -62,11 +63,16 @@ export const ListImg = styled(motion.img)`
   width: 100%;
   max-height: 50vh;
   object-fit: cover;
-  border-radius: 12px;
+  border-radius: 40px;
+  padding: 0 1em;
 `;
 
 export const CertifcatesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+  margin-top: 2em;
+  h1 {
+    text-align: center;
+  }
 `;
