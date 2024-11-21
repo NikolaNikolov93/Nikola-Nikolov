@@ -28,12 +28,16 @@ import Contacts from "./pages/contacts/Contacts";
 import Navigation from "./components/navigation/Navigation";
 import Sidebar from "./components/sidebar/Sidebar";
 import Certificate from "./pages/certificate/Certificate";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 /**
  *
  * @returns The App component that represents the whole page
  */
 function App() {
+  //React Queerry Client
+  const queryClient = new QueryClient();
+
   //Sets the state of the theme(Dark by default)
   const { isDarkTheme } = useTheme();
 
@@ -47,28 +51,30 @@ function App() {
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <AppContainer>
-        <MainSection>
-          <AppStaticSection>
-            <Navigation />
-          </AppStaticSection>
-          <AppDynamicSection>
-            <Routes>
-              <Route path={"/"} element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/about/:name/:id" element={<Certificate />} />
-              <Route path="/contacts" element={<Contacts />} />
-            </Routes>
-          </AppDynamicSection>
-        </MainSection>
-        <SidebarButton onClick={toggleSidebar} $isOpen={isSidebarOpen}>
-          <RxHamburgerMenu />
-        </SidebarButton>
-        <Sidebar
-          $isOpen={isSidebarOpen}
-          toggleSidebar={toggleSidebar}
-        ></Sidebar>
-      </AppContainer>
+      <QueryClientProvider client={queryClient}>
+        <AppContainer>
+          <MainSection>
+            <AppStaticSection>
+              <Navigation />
+            </AppStaticSection>
+            <AppDynamicSection>
+              <Routes>
+                <Route path={"/"} element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/about/:name/:id" element={<Certificate />} />
+                <Route path="/contacts" element={<Contacts />} />
+              </Routes>
+            </AppDynamicSection>
+          </MainSection>
+          <SidebarButton onClick={toggleSidebar} $isOpen={isSidebarOpen}>
+            <RxHamburgerMenu />
+          </SidebarButton>
+          <Sidebar
+            $isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+          ></Sidebar>
+        </AppContainer>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
