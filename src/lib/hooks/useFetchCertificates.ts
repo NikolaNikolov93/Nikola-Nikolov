@@ -1,23 +1,17 @@
 import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
 import { db } from "../../firebase/firebase";
 import { CertificateType } from "../types/types";
+import { useQuery } from "@tanstack/react-query";
 
-export default function useFetchCertificates() {
-  const [certificates, setCertificates] = useState<CertificateType[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
+const useFetchCertificates = () => {
+  return useQuery<CertificateType[], Error>({
+    queryKey: ["certificates"],
+    queryFn: async () => {
       const querySnapshot = await getDocs(collection(db, "courses"));
-      const fetchedCertificates: CertificateType[] = querySnapshot.docs.map(
-        (doc) => doc.data() as CertificateType
-      );
-      setCertificates(fetchedCertificates);
-      setIsLoading(false);
-    };
-    fetchData();
-  }, []);
+      return querySnapshot.docs.map((doc) => doc.data() as CertificateType);
+    },
+    staleTime: 10000,
+  });
+};
 
-  return certificates;
-}
+export default useFetchCertificates;
