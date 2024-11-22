@@ -42,3 +42,8 @@ export type CertificateCardProps = {
   name: string;
   url: string;
 };
+// AboutPage infoPari type
+export type infoPair = {
+  text: React.ReactNode;
+  img: string;
+};
