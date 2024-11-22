@@ -4,7 +4,7 @@ import { Card, StyledImgDiv, StyledLink } from "./CertificateCard.styles";
 const CertificateCard: React.FC<CertificateCardProps> = ({ id, name, url }) => {
   return (
     <Card
-      transition={{ duration: 1 }}
+      transition={{ duration: 1.5 }}
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
