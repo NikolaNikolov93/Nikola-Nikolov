@@ -24,7 +24,6 @@ dist-ssr
 *.sw?
 
 #Firebase configuration files
-firebase.json
 firebase.ts
 # Environment variables
 .env
