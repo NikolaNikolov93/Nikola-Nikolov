@@ -1,56 +1,113 @@
+//React imports
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+//Custom hook import
 import useFetchCertificateById from "../../lib/hooks/useFetchCertificatesById";
+
+//Styled components import
 import {
   CertificateImage,
+  CertificateImageWrapper,
   CertificateInfo,
+  ModalContent,
+  ModalOverlay,
   Wrapper,
+  ZoomedImage,
 } from "./Certificate.style";
 
+/**
+ *
+ * @returns React functional Component that renders a single Certificate with it's details. And a clickable image that can be zoomed in usig Modal.
+ */
 const Certificate = () => {
+  //Select the id from URL params.
   const { id } = useParams<{ id: string }>();
+
+  //Secure that ID is avilable.
   if (!id) {
     return <div>Error!</div>;
   }
-  const certificate = useFetchCertificateById(id);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { left, top, width, height } =
-      e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - left;
-    const y = e.clientY - top;
+  //Fetch the date by the custom hook
+  const {
+    data: certificate,
+    isLoading,
+    isError,
+    error,
+  } = useFetchCertificateById(id);
 
-    const xPercent = (x / width) * 100;
-    const yPercent = (y / height) * 100;
+  //Handle Mondal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-    setMousePosition({ x: xPercent, y: yPercent });
+  useEffect(() => {
+    if (isModalOpen) {
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === "Escape") {
+          setIsModalOpen(false);
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+
+      // Cleanup the event listener when modal is closed or component unmounts
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [isModalOpen]);
+
+  const handleImageClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   return (
-    <Wrapper>
-      <CertificateImage
-        $certificateImgUrl={certificate?.certificateImg || ""}
-        $x={mousePosition.x}
-        $y={mousePosition.y}
-        onMouseMove={handleMouseMove}
-      />
+    <>
+      {isLoading && <h2>Loading...</h2>}
+      {isError && <h2>{error.message}</h2>}
+      {certificate && (
+        <>
+          <Wrapper>
+            <CertificateImageWrapper onClick={handleImageClick}>
+              {" "}
+              <CertificateImage
+                $certificateImgUrl={certificate.certificateImg || ""}
+              />
+            </CertificateImageWrapper>
 
-      <CertificateInfo>
-        <p>
-          Course name: <span>{certificate?.name}</span>
-        </p>
-        <p>
-          Issued by: <span>{certificate?.issuedBy}</span>
-        </p>
-        <p>
-          Course finished on: <span>{certificate?.dateFinished}</span>
-        </p>
-        <p>
-          Grade: <span>{certificate?.grade}</span>
-        </p>
-      </CertificateInfo>
-    </Wrapper>
+            <CertificateInfo>
+              <p>
+                Course name: <span>{certificate.name}</span>
+              </p>
+              <p>
+                Issued by: <span>{certificate.issuedBy}</span>
+              </p>
+              <p>
+                Course finished on: <span>{certificate.dateFinished}</span>
+              </p>
+              <p>
+                Grade: <span>{certificate.grade}</span>
+              </p>
+            </CertificateInfo>
+          </Wrapper>
+          {isModalOpen && (
+            <ModalOverlay onClick={handleCloseModal}>
+              <ModalContent>
+                <ZoomedImage
+                  src={certificate?.certificateImg}
+                  alt="Zoomed certificate"
+                  onClick={(e) => e.stopPropagation()} // Prevent modal close on image click
+                />
+              </ModalContent>
+            </ModalOverlay>
+          )}
+        </>
+      )}
+    </>
   );
 };
 

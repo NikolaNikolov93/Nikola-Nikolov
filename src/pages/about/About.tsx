@@ -1,5 +1,10 @@
+//Import Information from the constnats
 import { myInfo } from "../../lib/constants";
+
+//Custom hook import
 import useFetchCertificates from "../../lib/hooks/useFetchCertificates";
+
+//Styled components import
 import {
   AboutWrapper,
   CertifcatesWrapper,
@@ -8,19 +13,25 @@ import {
   ListP,
   ListImg,
 } from "./About.styles";
+
+//Components import
 import CertificateCard from "./CertificateCard";
 import CertificateCardSkeleton from "./CertificateCardSkeleton";
 
+/**
+ *
+ * @returns React functional component that that renders the About page.
+ */
 const About: React.FC = () => {
-  const { isPending, error, data, isFetching } = useFetchCertificates();
-  let aboutInfo = myInfo;
+  //Fetch data using the custom hook with React Query implementation.
+  const { isPending, error, data } = useFetchCertificates();
 
   return (
     <Wrapper>
       <AboutWrapper>
         <ul>
-          {aboutInfo.map((infoItem, index) => (
-            <ListItem>
+          {myInfo.map((infoItem, index) => (
+            <ListItem key={index}>
               <ListP
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1 }}
