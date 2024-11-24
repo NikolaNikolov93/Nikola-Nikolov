@@ -24,6 +24,11 @@ export const AboutWrapper = styled.div`
     flex-wrap: wrap;
     gap: 1em;
   }
+  @media (max-width: 760px) {
+    &::after {
+      display: none;
+    }
+  }
 `;
 
 export const ListItem = styled(motion.li)`
