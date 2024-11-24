@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { SideBaroButtonProps } from "./lib/types/types";
+import { DefaultTheme } from "styled-components/dist/types";
 
-export const AppContainer = styled.div`
+export const AppContainer = styled.div<{ theme: DefaultTheme }>`
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.textPrimary};
   /* Hide scrollbar for Webkit browsers */

@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 
 //Import styled from styled-components library
 import styled from "styled-components";
+import { DefaultTheme } from "styled-components/dist/types";
 
 //Styled component for the Navigation Wrapper.
 export const StyledNavigation = styled.nav`
@@ -24,7 +25,7 @@ export const StyledList = styled.ul`
 `;
 
 //Styled component for the NavLinks.
-export const StyledLink = styled(NavLink)`
+export const StyledLink = styled(NavLink)<{ theme: DefaultTheme }>`
   color: ${({ theme }) => theme.textSecondary};
   transition: color 0.3s ease, transform 0.3s ease;
   position: relative;
@@ -42,7 +43,7 @@ export const StyledLink = styled(NavLink)`
 `;
 
 //Styled component for the decoration line under the NavLinks
-export const DecorationLine = styled.div`
+export const DecorationLine = styled.div<{ theme: DefaultTheme }>`
   position: absolute;
   left: 0;
   bottom: -2px;
@@ -62,7 +63,7 @@ export const DecorationLine = styled.div`
 `;
 
 //Styled Component for the social media Wrapper.
-export const StyledSocialList = styled.ul`
+export const StyledSocialList = styled.ul<{ theme: DefaultTheme }>`
   display: flex;
   justify-content: flex-start;
   gap: 1em;
