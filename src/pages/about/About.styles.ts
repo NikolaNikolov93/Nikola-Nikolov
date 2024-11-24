@@ -7,6 +7,7 @@ export const Wrapper = styled.section`
 `;
 
 export const AboutWrapper = styled.div`
+  flex-basis: 100%;
   margin-bottom: 2em;
   position: relative;
   &::after {
