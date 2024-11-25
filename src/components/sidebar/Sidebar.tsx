@@ -26,7 +26,7 @@ import { SidebarProps } from "../../lib/types/types";
 const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
   return (
     <SidebarContainer $isOpen={$isOpen}>
-      <CloseButton onClick={toggleSidebar}>
+      <CloseButton onClick={toggleSidebar} aria-label="closeButton">
         <AiOutlineCloseSquare />
       </CloseButton>
       <StyledList>

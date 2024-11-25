@@ -15,7 +15,11 @@ const ThemeSwitcher: React.FC = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
 
   return (
-    <Switch onClick={toggleTheme} $isDarkTheme={isDarkTheme}>
+    <Switch
+      onClick={toggleTheme}
+      $isDarkTheme={isDarkTheme}
+      aria-label="themeSwitch"
+    >
       <Slider $isDarkTheme={isDarkTheme}>
         {isDarkTheme ? <FaSun /> : <FaMoon />}
       </Slider>
