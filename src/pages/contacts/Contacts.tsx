@@ -57,7 +57,7 @@ const Contacts: React.FC = () => {
     <ContactsContainer>
       <h1>Contact me</h1>
       <h2>n.nikolov.business@outlook.com</h2>
-      <h4>Feel free to contact me with any inquiries or questions!</h4>
+      <h3>Feel free to contact me with any inquiries or questions!</h3>
       <ContactForm ref={form} onSubmit={sendEmail}>
         <Input type="text" name="user_name" placeholder="Your Name" required />
         <Input

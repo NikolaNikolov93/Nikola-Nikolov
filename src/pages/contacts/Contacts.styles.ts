@@ -13,7 +13,7 @@ export const ContactsContainer = styled.section`
   h2 {
     color: ${({ theme }) => theme.accentPrimary};
   }
-  h4 {
+  h3 {
     color: ${({ theme }) => theme.accentSecondary};
     margin-bottom: 2em;
   }
