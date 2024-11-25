@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
-export const SidebarContainer = styled.nav<{ $isOpen: boolean }>`
+export const SidebarContainer = styled.nav<{
+  $isOpen: boolean;
+}>`
   position: fixed;
   top: 0;
   left: 0;
@@ -17,6 +19,7 @@ export const SidebarContainer = styled.nav<{ $isOpen: boolean }>`
     $isOpen ? "translateX(0)" : "translateX(-100%)"};
   transition: transform 0.7s ease;
   z-index: 1000;
+  box-shadow: 5px 0 12px -2px rgba(0, 0, 0, 0.3); /* Right-side shadow */
 `;
 
 export const CloseButton = styled.button`
