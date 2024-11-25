@@ -16,7 +16,7 @@ export const SidebarContainer = styled.nav<{
   align-items: flex-start;
   padding: 2em 1em;
   transform: ${({ $isOpen }) =>
-    $isOpen ? "translateX(0)" : "translateX(-100%)"};
+    $isOpen ? "translateX(0)" : "translateX(-120%)"};
   transition: transform 0.7s ease;
   z-index: 1000;
   box-shadow: 5px 0 12px -2px rgba(0, 0, 0, 0.3); /* Right-side shadow */
