@@ -39,6 +39,7 @@ export const StyledList = styled.ul`
   gap: 1em;
   font-size: 1.3em;
 `;
+export const StyledListElement = styled.li``;
 
 export const StyledLink = styled(NavLink)`
   color: ${({ theme }) => theme.textSecondary};

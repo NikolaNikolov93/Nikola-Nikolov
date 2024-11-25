@@ -13,6 +13,7 @@ import {
   SidebarContainer,
   StyledLink,
   StyledList,
+  StyledListElement,
   StyledSocialList,
   ThemeSwitcherContainer,
 } from "./Sidebar.styles";
@@ -30,21 +31,29 @@ const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
         <AiOutlineCloseSquare />
       </CloseButton>
       <StyledList>
-        <ThemeSwitcherContainer>
-          <ThemeSwitcher />
-        </ThemeSwitcherContainer>
-        <StyledLink to="/" onClick={toggleSidebar}>
-          <DecorationLine />
-          <p>Home</p>
-        </StyledLink>
-        <StyledLink to="/about" onClick={toggleSidebar}>
-          <DecorationLine />
-          <p>About</p>
-        </StyledLink>
-        <StyledLink to="/contacts" onClick={toggleSidebar}>
-          <DecorationLine />
-          <p>Contacts</p>
-        </StyledLink>
+        <StyledListElement>
+          <ThemeSwitcherContainer>
+            <ThemeSwitcher />
+          </ThemeSwitcherContainer>
+        </StyledListElement>
+        <StyledListElement>
+          <StyledLink to="/" onClick={toggleSidebar}>
+            <DecorationLine />
+            <p>Home</p>
+          </StyledLink>
+        </StyledListElement>
+        <StyledListElement>
+          <StyledLink to="/about" onClick={toggleSidebar}>
+            <DecorationLine />
+            <p>About</p>
+          </StyledLink>
+        </StyledListElement>
+        <StyledListElement>
+          <StyledLink to="/contacts" onClick={toggleSidebar}>
+            <DecorationLine />
+            <p>Contacts</p>
+          </StyledLink>
+        </StyledListElement>
       </StyledList>
       <StyledSocialList>
         <li>
@@ -52,6 +61,7 @@ const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
             href="https://www.linkedin.com/in/nikola-nikolov-a53b2925a/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="linkedin"
           >
             <CiLinkedin />
           </a>
@@ -61,6 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
             href="https://github.com/NikolaNikolov93"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="github"
           >
             <FaGithub />
           </a>
@@ -70,6 +81,7 @@ const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
             href="https://www.facebook.com/nikola.nikolov.77"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="facebook"
           >
             <FaFacebook />
           </a>
