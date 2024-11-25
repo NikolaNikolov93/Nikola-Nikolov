@@ -45,6 +45,7 @@ const About: React.FC = () => {
               </ListP>
               <ListImg
                 src={infoItem.img}
+                alt={infoItem.img}
                 whileInView={{ x: 0, opacity: 1 }}
                 transition={{ duration: 1 }}
                 initial={
