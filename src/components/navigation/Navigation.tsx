@@ -52,6 +52,7 @@ const Navigation: React.FC = () => {
               href="https://www.linkedin.com/in/nikola-nikolov-a53b2925a/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="linkedin"
             >
               <CiLinkedin />
             </a>
@@ -61,6 +62,7 @@ const Navigation: React.FC = () => {
               href="https://github.com/NikolaNikolov93"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="github"
             >
               <FaGithub />
             </a>
@@ -70,6 +72,7 @@ const Navigation: React.FC = () => {
               href="https://www.facebook.com/nikola.nikolov.77"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="facebook"
             >
               <FaFacebook />
             </a>
