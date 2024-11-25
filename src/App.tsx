@@ -66,7 +66,11 @@ function App() {
               </Routes>
             </AppDynamicSection>
           </MainSection>
-          <SidebarButton onClick={toggleSidebar} $isOpen={isSidebarOpen}>
+          <SidebarButton
+            onClick={toggleSidebar}
+            $isOpen={isSidebarOpen}
+            aria-label="hamburger-menu"
+          >
             <RxHamburgerMenu />
           </SidebarButton>
           <Sidebar

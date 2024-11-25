@@ -32,10 +32,10 @@ export const HomeBio = styled(HomeContainerElement)`
   h1 {
     color: ${({ theme }) => theme.accentSecondary};
   }
-  h3 {
+  h2 {
     color: ${({ theme }) => theme.textPrimary};
   }
-  h4 {
+  h3 {
     color: ${({ theme }) => theme.textSecondary};
   }
 `;

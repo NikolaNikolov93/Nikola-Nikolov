@@ -10,8 +10,8 @@ const Home: React.FC = () => {
     <HomeContentContainer>
       <HomeBio>
         <h1>Nikola Nikolov</h1>
-        <h3>Frontend Developer</h3>
-        <h4>I am ready to bring creativity and functionality to the web.</h4>
+        <h2>Frontend Developer</h2>
+        <h3>I am ready to bring creativity and functionality to the web.</h3>
       </HomeBio>
       <StyledImg>
         <img src="/profile-pic.png" alt="profile-pic" />
