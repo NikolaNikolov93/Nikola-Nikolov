@@ -8,7 +8,7 @@ export const CertificateImage = styled.div<{
   background-image: url(${(props) => props.$certificateImgUrl});
   background-size: 60%;
   background-repeat: no-repeat;
-  background-position: top;
+  background-position: center;
 `;
 export const CertificateInfo = styled.div`
   display: flex;
@@ -31,6 +31,13 @@ export const Wrapper = styled.div`
   ${CertificateImageWrapper},${CertificateInfo} {
     flex-basis: calc((100% - 1em) / 2);
     height: 80vh;
+  }
+  @media (max-width: 760px) {
+    flex-wrap: wrap;
+    ${CertificateImageWrapper},${CertificateInfo} {
+      flex-basis: 100%;
+      height: 60vh;
+    }
   }
 `;
 
