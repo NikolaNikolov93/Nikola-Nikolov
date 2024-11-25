@@ -24,6 +24,8 @@ export const AboutWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
+    overflow: hidden;
+    position: relative;
   }
   @media (max-width: 760px) {
     &::after {
