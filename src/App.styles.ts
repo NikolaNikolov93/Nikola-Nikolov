@@ -28,7 +28,6 @@ export const AppStaticSection = styled.section`
   position: sticky;
   top: 0;
   width: 30vw;
-  overflow: hidden;
   padding: 2em;
   @media (max-width: 800px) {
     text-align: start;

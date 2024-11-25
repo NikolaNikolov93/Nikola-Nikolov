@@ -37,8 +37,8 @@ const About: React.FC = () => {
                 transition={{ duration: 1 }}
                 initial={
                   index % 2 == 0
-                    ? { x: -200, opacity: 0 }
-                    : { x: 200, opacity: 0 }
+                    ? { x: -50, opacity: 0 }
+                    : { x: 50, opacity: 0 }
                 }
               >
                 {infoItem.text}
@@ -49,8 +49,8 @@ const About: React.FC = () => {
                 transition={{ duration: 1 }}
                 initial={
                   index % 2 == 0
-                    ? { x: 200, opacity: 0 }
-                    : { x: -200, opacity: 0 }
+                    ? { x: 50, opacity: 0 }
+                    : { x: -50, opacity: 0 }
                 }
               ></ListImg>
             </ListItem>

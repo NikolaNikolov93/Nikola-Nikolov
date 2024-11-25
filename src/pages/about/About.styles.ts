@@ -2,13 +2,15 @@ import { motion } from "motion/react";
 import styled from "styled-components";
 
 export const Wrapper = styled.section`
+  display: flex;
+  flex-direction: column;
   padding: 1em;
   text-align: center;
+  gap: 3em;
 `;
 
 export const AboutWrapper = styled.div`
   flex-basis: 100%;
-  margin-bottom: 2em;
   position: relative;
   &::after {
     content: "";
@@ -24,8 +26,7 @@ export const AboutWrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     gap: 1em;
-    overflow: hidden;
-    position: relative;
+    overflow-x: hidden;
   }
   @media (max-width: 760px) {
     &::after {
@@ -69,7 +70,8 @@ export const ListImg = styled(motion.img)`
   flex-basis: calc((100% - 1em) / 2);
   height: auto;
   width: 100%;
-  max-height: 50vh;
+  max-width: 100%;
+  max-height: 45vh;
   object-fit: cover;
   border-radius: 40px;
   padding: 0 1em;
@@ -79,7 +81,6 @@ export const CertifcatesWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 2em;
   h1 {
     text-align: center;
   }
