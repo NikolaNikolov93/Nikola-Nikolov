@@ -23,7 +23,7 @@ export const StyledList = styled.ul`
   align-items: flex-start;
   font-size: 1.3em;
 `;
-
+export const StyledListElement = styled.li``;
 //Styled component for the NavLinks.
 export const StyledLink = styled(NavLink)<{ theme: DefaultTheme }>`
   color: ${({ theme }) => theme.textSecondary};
