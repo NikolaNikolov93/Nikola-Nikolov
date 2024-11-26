@@ -29,6 +29,7 @@ import Navigation from "./components/navigation/Navigation";
 import Sidebar from "./components/sidebar/Sidebar";
 import Certificate from "./pages/certificate/Certificate";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import PageNotFound from "./pages/pageNotFount/pageNotFound";
 
 /**
  *
@@ -63,6 +64,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/about/:name/:id" element={<Certificate />} />
                 <Route path="/contacts" element={<Contacts />} />
+                <Route path="*" element={<PageNotFound />}></Route>
               </Routes>
             </AppDynamicSection>
           </MainSection>

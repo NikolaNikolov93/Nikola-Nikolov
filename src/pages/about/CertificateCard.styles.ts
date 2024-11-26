@@ -25,7 +25,7 @@ export const StyledLink = styled(Link)`
   background-color: ${({ theme }) => theme.accentSecondary};
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
   &:hover {
-    background-color: ${({ theme }) => theme.background};
+    background-color: ${({ theme }) => theme.accentPrimary};
     color: ${({ theme }) => theme.textPrimary};
   }
 `;
