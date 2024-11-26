@@ -9,7 +9,7 @@ import { useTheme } from "../../lib/hooks/useTheme";
 
 /**
  *
- * @returns React functional component
+ * @returns React functional component used for swtiching between light and dark theme
  */
 const ThemeSwitcher: React.FC = () => {
   const { isDarkTheme, toggleTheme } = useTheme();
