@@ -31,7 +31,7 @@ import Certificate from "./pages/certificate/Certificate";
 
 //React query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import PageNotFound from "./pages/pageNotFount/pageNotFound";
+import PageNotFound from "./pages/404/NotFound";
 
 /**
  *
