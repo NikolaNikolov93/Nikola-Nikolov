@@ -14,6 +14,7 @@ export const SidebarContainer = styled.nav<{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   padding: 2em 1em;
   transform: ${({ $isOpen }) =>
     $isOpen ? "translateX(0)" : "translateX(-120%)"};
@@ -62,7 +63,6 @@ export const StyledLink = styled(NavLink)`
 export const StyledSocialList = styled.ul`
   display: flex;
   gap: 1em;
-  margin-top: auto;
   font-size: 1.8em;
 
   a {
