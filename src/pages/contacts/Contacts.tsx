@@ -10,6 +10,7 @@ import {
   Input,
   Textarea,
 } from "./Contacts.styles";
+import { sanitizeInput, validateForm } from "../../lib/utility/formUtils";
 
 /**
  *
@@ -25,6 +26,19 @@ const Contacts: React.FC = () => {
     e.preventDefault();
 
     if (form.current) {
+      //Validate and sanitzie form data
+      const formData = new FormData(form.current);
+      const name = sanitizeInput(formData.get("user_name") as string);
+      const email = sanitizeInput(formData.get("user_email") as string);
+      const message = sanitizeInput(formData.get("message") as string);
+      const validationError = validateForm(name, email, message);
+
+      //Throw error if validation fails
+      if (validationError) {
+        setFormMessage(validationError);
+        return;
+      }
+      //Sent email with validated data
       try {
         await emailjs.sendForm(
           "contact_service",
@@ -36,6 +50,8 @@ const Contacts: React.FC = () => {
         );
         setFormMessage("Message sent successfully");
         form.current.reset();
+
+        //Email sending error handling
       } catch (error) {
         // Narrow the type of `error` to properly access its properties
         if (error instanceof Error) {
@@ -59,14 +75,26 @@ const Contacts: React.FC = () => {
       <h2>n.nikolov.business@outlook.com</h2>
       <h3>Feel free to contact me with any inquiries or questions!</h3>
       <ContactForm ref={form} onSubmit={sendEmail}>
-        <Input type="text" name="user_name" placeholder="Your Name" required />
+        <Input
+          type="text"
+          name="user_name"
+          placeholder="Your Name"
+          required
+          maxLength={50}
+        />
         <Input
           type="email"
           name="user_email"
           placeholder="Your Email"
           required
+          maxLength={254}
         />
-        <Textarea name="message" placeholder="message" required />
+        <Textarea
+          name="message"
+          placeholder="message"
+          required
+          maxLength={1500}
+        />
         <ButtonWrapper>
           <Button type="submit">Send Message</Button>
         </ButtonWrapper>
