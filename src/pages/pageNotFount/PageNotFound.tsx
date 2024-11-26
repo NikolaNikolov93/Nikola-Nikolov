@@ -45,7 +45,7 @@ const Illustration = styled.div`
 `;
 
 // 404 Component
-const NotFoundPage: React.FC = () => {
+const PageNotFound: React.FC = () => {
   return (
     <PageContainer>
       <SubHeading>Page Not Found</SubHeading>
@@ -60,4 +60,4 @@ const NotFoundPage: React.FC = () => {
   );
 };
 
-export default NotFoundPage;
+export default PageNotFound;
