@@ -8,7 +8,7 @@ export const SidebarContainer = styled.nav<{
   top: 0;
   left: 0;
   width: 250px;
-  height: 100vh;
+  height: 100dvh;
   background-color: ${({ theme }) => theme.background};
   color: ${({ theme }) => theme.textPrimary};
   display: flex;
