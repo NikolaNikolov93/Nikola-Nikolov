@@ -27,7 +27,7 @@ export const CloseButton = styled.button`
   align-self: flex-start;
   background: none;
   border: none;
-  font-size: 2em;
+  font-size: 3em;
   color: ${({ theme }) => theme.textPrimary};
   cursor: pointer;
 `;

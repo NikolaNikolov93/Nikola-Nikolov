@@ -18,6 +18,7 @@ import {
   ThemeSwitcherContainer,
 } from "./Sidebar.styles";
 import { SidebarProps } from "../../lib/types/types";
+import { useSwipeable } from "react-swipeable";
 
 /**
  *
@@ -25,8 +26,16 @@ import { SidebarProps } from "../../lib/types/types";
  * @returns React functional component
  */
 const Sidebar: React.FC<SidebarProps> = ({ $isOpen, toggleSidebar }) => {
+  // Swipeable handler
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => {
+      if ($isOpen) toggleSidebar(); // Close sidebar on swipe left
+    },
+    preventScrollOnSwipe: true, // Prevent scrolling while swiping
+    trackMouse: true, // Enables swipe gestures on desktop for testing
+  });
   return (
-    <SidebarContainer $isOpen={$isOpen}>
+    <SidebarContainer $isOpen={$isOpen} {...swipeHandlers}>
       <CloseButton onClick={toggleSidebar} aria-label="closeButton">
         <AiOutlineCloseSquare />
       </CloseButton>

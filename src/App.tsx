@@ -32,6 +32,7 @@ import Certificate from "./pages/certificate/Certificate";
 //React query
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PageNotFound from "./pages/404/NotFound";
+import { useSwipeable } from "react-swipeable";
 
 /**
  *
@@ -52,6 +53,14 @@ function App() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  //Handle sidebar state on mobile devices
+  const swipeHandlers = useSwipeable({
+    onTap: () => {
+      if (isSidebarOpen) toggleSidebar(); // Close sidebar on dynamic part Tap
+    },
+    preventScrollOnSwipe: true, // Prevent scrolling while swiping
+  });
+
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <QueryClientProvider client={queryClient}>
@@ -60,7 +69,7 @@ function App() {
             <AppStaticSection>
               <Navigation />
             </AppStaticSection>
-            <AppDynamicSection>
+            <AppDynamicSection {...swipeHandlers}>
               <Routes>
                 <Route path={"/"} element={<Home />} />
                 <Route path="/about" element={<About />} />
