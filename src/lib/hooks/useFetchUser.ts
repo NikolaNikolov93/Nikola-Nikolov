@@ -1,30 +1,23 @@
 import { collection, getDocs } from "firebase/firestore";
-import { useEffect, useState } from "react";
 import { db } from "../../firebase/firebase";
+import { useQuery } from "@tanstack/react-query";
+import { UserType } from "../types/types";
 
-type UserType = {
-  age: number;
-  birthDate?: Date;
-  birthYear: string;
-  city: string;
-  country: string;
-  firstName: string;
-  lastName: string;
-  secondName: string;
+/**
+ *
+ * @returns The portfolio user data. Can be used anywhere to provide the portfolio user data.
+ */
+const useFetchUser = () => {
+  return useQuery<UserType[], Error>({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const querySnapshot = await getDocs(collection(db, "user"));
+      console.log(querySnapshot);
+
+      return querySnapshot.docs.map((doc) => doc.data() as UserType);
+    },
+    staleTime: 10000,
+  });
 };
 
-export default function useFetchUser() {
-  const [user, setUser] = useState<UserType | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(db, "user"));
-      querySnapshot.forEach((doc) => {
-        setUser(doc.data() as UserType);
-      });
-    };
-    fetchData();
-  }, []);
-
-  return user;
-}
+export default useFetchUser;

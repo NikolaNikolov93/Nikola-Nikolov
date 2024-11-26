@@ -47,3 +47,15 @@ export type infoPair = {
   text: React.ReactNode;
   img: string;
 };
+
+//User Type
+export type UserType = {
+  age: number;
+  birthDate?: Date;
+  birthYear: string;
+  city: string;
+  country: string;
+  firstName: string;
+  lastName: string;
+  secondName: string;
+};
