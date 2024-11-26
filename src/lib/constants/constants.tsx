@@ -1,5 +1,5 @@
-import {} from "../pages/about/About.styles";
-import { infoPair } from "./types/types";
+import { infoPair } from "../types/types";
+
 /**
  * A constant that holds a paragraph as React.Node and image path. Together they create the About page Info section
  *

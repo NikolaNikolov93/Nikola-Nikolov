@@ -1,5 +1,5 @@
 //Import Information from the constnats
-import { myInfo } from "../../lib/constants";
+import { myInfo } from "../../lib/constants/constants";
 
 //Custom hook import
 import useFetchCertificates from "../../lib/hooks/useFetchCertificates";
