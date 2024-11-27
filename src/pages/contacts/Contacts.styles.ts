@@ -7,6 +7,8 @@ export const ContactsContainer = styled.section`
   gap: 1em;
   padding: 1em;
   margin: 0 auto;
+  text-align: center;
+
   h1 {
     margin-bottom: 1em;
   }
@@ -17,20 +19,28 @@ export const ContactsContainer = styled.section`
     color: ${({ theme }) => theme.accentSecondary};
     margin-bottom: 2em;
   }
-  @media (max-width: 600px) {
-    text-align: center;
-    h1,
-    h2,
-    h4 {
-      font-size: 0.9em;
-    }
-  }
   @media (max-width: 800px) {
     text-align: center;
-    h1,
-    h2,
-    h4 {
-      font-size: 1em;
+    h1 {
+      font-size: 1.75em;
+    }
+    h2 {
+      font-size: 1.5em;
+    }
+    h3 {
+      font-size: 1.25em;
+    }
+  }
+  @media (max-width: 600px) {
+    text-align: center;
+    h1 {
+      font-size: 1.5em;
+    }
+    h2 {
+      font-size: 1.25em;
+    }
+    h3 {
+      font-size: 1.1em;
     }
   }
 `;
