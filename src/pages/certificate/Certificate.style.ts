@@ -46,7 +46,10 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background-color: ${({ theme }) =>
+    `rgba(${parseInt(theme.divider.slice(1, 3), 16)}, 
+          ${parseInt(theme.divider.slice(3, 5), 16)}, 
+          ${parseInt(theme.divider.slice(5, 7), 16)}, 0.8)`};
   display: flex;
   align-items: center;
   justify-content: center;
