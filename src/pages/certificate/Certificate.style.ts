@@ -26,17 +26,16 @@ export const CertificateImageWrapper = styled.div``;
 
 export const Wrapper = styled.div`
   display: flex;
-  gap: 1em;
 
   ${CertificateImageWrapper},${CertificateInfo} {
     flex-basis: calc((100% - 1em) / 2);
-    height: 80vh;
+    height: 80dvh;
   }
   @media (max-width: 760px) {
     flex-wrap: wrap;
     ${CertificateImageWrapper},${CertificateInfo} {
       flex-basis: 100%;
-      height: 60vh;
+      height: 50dvh;
     }
   }
 `;
