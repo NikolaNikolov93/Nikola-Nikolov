@@ -24,18 +24,13 @@ const Certificate = () => {
   //Select the id from URL params.
   const { id } = useParams<{ id: string }>();
 
-  //Secure that ID is avilable.
-  if (!id) {
-    return <div>Error!</div>;
-  }
-
   //Fetch the date by the custom hook
   const {
     data: certificate,
     isLoading,
     isError,
     error,
-  } = useFetchCertificateById(id);
+  } = useFetchCertificateById(id || "");
 
   //Handle Mondal state
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -64,6 +59,11 @@ const Certificate = () => {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  //Secure that ID is avilable.
+  if (!id) {
+    return <div>Error!</div>;
+  }
 
   return (
     <>
