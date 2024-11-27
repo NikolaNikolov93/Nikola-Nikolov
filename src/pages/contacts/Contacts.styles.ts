@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const ContactsContainer = styled.section`
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   gap: 1em;
   padding: 1em;
   margin: 0 auto;
-  text-align: center;
+  max-width: 100%;
 
   h1 {
     margin-bottom: 1em;
@@ -17,7 +18,7 @@ export const ContactsContainer = styled.section`
   }
   h3 {
     color: ${({ theme }) => theme.accentSecondary};
-    margin-bottom: 2em;
+    margin-bottom: 1.5em;
   }
   @media (max-width: 800px) {
     text-align: center;
@@ -43,6 +44,23 @@ export const ContactsContainer = styled.section`
       font-size: 1.1em;
     }
   }
+  @media (max-width: 450px) {
+    padding: 0.5em; /* Reduce padding for small screens */
+    text-align: center;
+    h1 {
+      font-size: 1.3em;
+    }
+    h2 {
+      font-size: 1.1em;
+    }
+    h3 {
+      font-size: 0.9;
+    }
+  }
+`;
+export const HeadingSection = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 export const ContactForm = styled.form`
   display: flex;
@@ -54,7 +72,6 @@ export const ContactForm = styled.form`
   padding: 1em;
   border: 1px solid #ccc;
   border-radius: 10px;
-  flex-shrink: 1;
   background-color: ${({ theme }) => theme.divider};
 `;
 
@@ -67,7 +84,7 @@ export const Input = styled.input`
   background-color: ${({ theme }) => theme.divider};
   border-color: ${({ theme }) => theme.textPrimary};
   @media (max-width: 600px) {
-    flex-basis: 100%; /* Full width on smaller screens */
+    flex-basis: 100%;
   }
 `;
 

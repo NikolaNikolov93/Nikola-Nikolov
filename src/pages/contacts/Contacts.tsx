@@ -7,6 +7,7 @@ import {
   ContactForm,
   ContactsContainer,
   FormMessage,
+  HeadingSection,
   Input,
   Textarea,
 } from "./Contacts.styles";
@@ -71,9 +72,11 @@ const Contacts: React.FC = () => {
   };
   return (
     <ContactsContainer>
-      <h1>Contact me</h1>
-      <h2>n.nikolov.business@outlook.com</h2>
-      <h3>Feel free to contact me with any inquiries or questions!</h3>
+      <HeadingSection>
+        <h1>Contact me</h1>
+        <h2>n.nikolov.business@outlook.com</h2>
+        <h3>Feel free to contact me with any inquiries or questions!</h3>
+      </HeadingSection>
       <ContactForm ref={form} onSubmit={sendEmail}>
         <Input
           type="text"
