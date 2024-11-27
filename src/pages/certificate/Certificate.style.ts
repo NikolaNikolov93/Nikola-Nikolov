@@ -55,7 +55,6 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  position: relative;
   max-width: 90%;
   max-height: 90%;
   overflow: auto; /* Enable scrolling */
@@ -66,6 +65,21 @@ export const ModalContent = styled.div`
   border-radius: 10px;
 `;
 
+export const CloseButton = styled.button`
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: transparent;
+  border: none;
+  color: ${({ theme }) => theme.textPrimary};
+  font-size: 2em;
+  cursor: pointer;
+
+  @media (max-width: 860px) {
+    display: block;
+  }
+`;
 export const ZoomedImage = styled.img`
   max-width: 130%; /* Zoom the image */
   max-height: 130%;

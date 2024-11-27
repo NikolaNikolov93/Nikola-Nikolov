@@ -10,6 +10,7 @@ import {
   CertificateImage,
   CertificateImageWrapper,
   CertificateInfo,
+  CloseButton,
   ModalContent,
   ModalOverlay,
   Wrapper,
@@ -97,6 +98,15 @@ const Certificate = () => {
           {isModalOpen && (
             <ModalOverlay onClick={handleCloseModal}>
               <ModalContent>
+                <CloseButton
+                  onClick={() => {
+                    {
+                      handleCloseModal;
+                    }
+                  }}
+                >
+                  ✕
+                </CloseButton>
                 <ZoomedImage
                   src={certificate?.certificateImg}
                   alt="Zoomed certificate"
