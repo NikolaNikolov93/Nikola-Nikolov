@@ -4,9 +4,9 @@ import styled from "styled-components";
 export const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 1em;
   text-align: center;
   gap: 3em;
+  padding: 1em;
 `;
 
 export const AboutWrapper = styled.div`

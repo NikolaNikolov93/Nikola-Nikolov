@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const ContactsContainer = styled.section`
-  padding: 1em;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1em;
+  padding: 1em;
   margin: 0 auto;
   h1 {
     margin-bottom: 1em;

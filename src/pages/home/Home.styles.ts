@@ -5,6 +5,7 @@ export const HomeContentContainer = styled.section`
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+  padding: 1em;
 
   @media (min-width: 481px) and (max-width: 768px) {
     flex-direction: column;
