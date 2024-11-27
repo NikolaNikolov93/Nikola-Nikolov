@@ -99,11 +99,8 @@ const Certificate = () => {
             <ModalOverlay onClick={handleCloseModal}>
               <ModalContent>
                 <CloseButton
-                  onClick={() => {
-                    {
-                      handleCloseModal;
-                    }
-                  }}
+                  onClick={handleCloseModal}
+                  aria-label="closeButton"
                 >
                   ✕
                 </CloseButton>
