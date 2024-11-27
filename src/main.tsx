@@ -7,9 +7,9 @@ import "./index.css";
 
 //App import
 import App from "./App.tsx";
+import { ThemeContextProvider } from "./context/ThemeContextProvider.tsx";
 
 //Theme context import
-import { ThemeContextProvider } from "./context/ThemeContext.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
