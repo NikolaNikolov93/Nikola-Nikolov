@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-// Styled Components
-
 export const PageContainer = styled.div`
   padding: 1em;
   display: flex;

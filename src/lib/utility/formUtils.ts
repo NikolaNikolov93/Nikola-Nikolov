@@ -1,3 +1,4 @@
+//Form input validation
 export const validateForm = (
   name: string,
   email: string,
@@ -11,6 +12,7 @@ export const validateForm = (
   return null;
 };
 
+//Input sanitizasiton checking for code injection.
 export const sanitizeInput = (input: string): string => {
   return input.replace(/<[^>]*>?/gm, "").trim();
 };
