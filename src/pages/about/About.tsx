@@ -39,11 +39,7 @@ const About: React.FC = () => {
 
   //Scroll to top handler
   const scrollToTop = () => {
-    if ("scrollBehavior" in document.documentElement.style) {
-      topRef.current?.scrollIntoView({ behavior: "smooth" });
-    } else {
-      window.scrollTo(0, 0);
-    }
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   return (
     <Wrapper ref={topRef}>
@@ -104,7 +100,7 @@ const About: React.FC = () => {
           aperiam ducimus, similique eligendi explicabo velit provident rem
           atque voluptate distinctio.
         </p>{" "}
-        <ArrowButton isUp={true} scrollToSection={scrollToTop} />
+        <ArrowButton $isUp={true} scrollToSection={scrollToTop} />
       </Footer>
     </Wrapper>
   );

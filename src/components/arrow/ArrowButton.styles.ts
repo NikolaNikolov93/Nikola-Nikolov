@@ -2,7 +2,7 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 type ArrowProps = {
-  isUp: boolean;
+  $isUp: boolean;
 };
 
 export const ArrowPlaceholder = styled(motion(Link))<ArrowProps>`
@@ -11,7 +11,7 @@ export const ArrowPlaceholder = styled(motion(Link))<ArrowProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 45px;
   height: 45px;

@@ -3,13 +3,16 @@ import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 
 type ArrowButtonProps = {
   scrollToSection: () => void;
-  isUp: boolean;
+  $isUp: boolean;
 };
 
-const ArrowButton: React.FC<ArrowButtonProps> = ({ scrollToSection, isUp }) => {
+const ArrowButton: React.FC<ArrowButtonProps> = ({
+  scrollToSection,
+  $isUp,
+}) => {
   return (
     <ArrowPlaceholder
-      isUp={isUp}
+      $isUp={$isUp}
       onClick={scrollToSection}
       whileHover={{
         scale: 1.1,
@@ -19,15 +22,15 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({ scrollToSection, isUp }) => {
       }}
     >
       <Arrow
-        isUp={isUp}
+        $isUp={$isUp}
         initial={{ y: 0, opacity: 1, scale: 1 }}
-        animate={{ y: isUp ? -10 : 10, opacity: [0, 1, 0], scale: 1.1 }}
+        animate={{ y: $isUp ? -10 : 10, opacity: [0, 1, 0], scale: 1.1 }}
         transition={{
           duration: 1.3,
           repeat: Infinity,
         }}
       >
-        {isUp ? <IoIosArrowUp /> : <IoIosArrowDown />}
+        {$isUp ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </Arrow>
     </ArrowPlaceholder>
   );
