@@ -14,7 +14,7 @@ export const myInfo: infoPair[] = [
         and creating impactful solutions.
       </>
     ),
-    img: "/pc-setup.jpg",
+    img: "/animated-profile.png",
   },
   {
     text: (
@@ -30,7 +30,7 @@ export const myInfo: infoPair[] = [
         .
       </>
     ),
-    img: "/journey.jpg",
+    img: "/launch2.png",
   },
   {
     text: (
@@ -41,7 +41,7 @@ export const myInfo: infoPair[] = [
         both in my personal and professional life.
       </>
     ),
-    img: "/hiking.jpg",
+    img: "/hiking2.png",
   },
   {
     text: (
@@ -51,6 +51,7 @@ export const myInfo: infoPair[] = [
         <span>learn, collaborate, and grow.</span>
       </>
     ),
-    img: "/launch.jpg",
+
+    img: "/journey.png",
   },
 ];

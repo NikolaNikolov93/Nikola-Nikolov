@@ -73,8 +73,8 @@ export const ListImg = styled(motion.img)`
   max-width: 100%;
   max-height: 45vh;
   object-fit: cover;
+  object-position: top;
   border-radius: 40px;
-  padding: 0 1em;
 `;
 
 export const CertifcatesWrapper = styled.div`
