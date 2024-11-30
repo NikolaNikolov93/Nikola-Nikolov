@@ -47,6 +47,7 @@ export const ModalOverlay = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${({ theme }) =>
+    //Takes the theme.divider hex color, removes the # and takes the RGB characters and converts to decimal.
     `rgba(${parseInt(theme.divider.slice(1, 3), 16)}, 
           ${parseInt(theme.divider.slice(3, 5), 16)}, 
           ${parseInt(theme.divider.slice(5, 7), 16)}, 0.8)`};

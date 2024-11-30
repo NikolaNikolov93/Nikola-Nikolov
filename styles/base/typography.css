@@ -2,6 +2,7 @@
 
 html {
   font-size: 16px; /* Sets a base font size */
+  scroll-behavior: smooth;
 }
 
 body {

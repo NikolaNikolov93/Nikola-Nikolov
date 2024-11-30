@@ -1,4 +1,5 @@
 //Import Information from the constnats
+import { useRef } from "react";
 import { myInfo } from "../../lib/constants/constants";
 
 //Custom hook import
@@ -12,22 +13,38 @@ import {
   ListItem,
   ListP,
   ListImg,
+  Footer,
 } from "./About.styles";
 
 //Components import
 import CertificateCard from "./CertificateCard";
 import CertificateCardSkeleton from "./CertificateCardSkeleton";
+import ArrowButton from "../../components/arrow/ArrowButton";
 
 /**
  *
  * @returns React functional component that that renders the About page.
  */
 const About: React.FC = () => {
+  //Reference for the bottom element
+  const bottomRef = useRef<HTMLDivElement>(null);
+
+  //Reference fro the top element
+  const topRef = useRef<HTMLDivElement>(null);
+
   //Fetch data using the custom hook with React Query implementation.
   const { isPending, error, data } = useFetchCertificates();
 
+  //Scroll to bottom handler
+  const scrollToBottom = () => {
+    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  //Scroll to top handler
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
   return (
-    <Wrapper>
+    <Wrapper ref={topRef}>
       <AboutWrapper>
         <ul>
           {myInfo.map((infoItem, index) => (
@@ -77,6 +94,16 @@ const About: React.FC = () => {
           />
         ))}
       </CertifcatesWrapper>
+
+      <Footer ref={bottomRef}>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum beatae
+          ducimus, ullam animi voluptate eius adipisci quis. Neque, suscipit
+          aperiam ducimus, similique eligendi explicabo velit provident rem
+          atque voluptate distinctio.
+        </p>{" "}
+        <ArrowButton isUp={true} scrollToSection={scrollToTop} />
+      </Footer>
     </Wrapper>
   );
 };

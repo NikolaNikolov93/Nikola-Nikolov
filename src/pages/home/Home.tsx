@@ -14,7 +14,7 @@ const Home: React.FC = () => {
         <h3>I am ready to bring creativity and functionality to the web.</h3>
       </HomeBio>
       <StyledImg>
-        <img src="/profile-pic.png" alt="profile-pic" />
+        <img src="/home-png.png" alt="profile-pic" />
       </StyledImg>
     </HomeContentContainer>
   );
