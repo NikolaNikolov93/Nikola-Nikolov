@@ -36,9 +36,7 @@ const About: React.FC = () => {
   const { isPending, error, data } = useFetchCertificates();
 
   //Scroll to bottom handler
-  const scrollToBottom = () => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+
   //Scroll to top handler
   const scrollToTop = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
