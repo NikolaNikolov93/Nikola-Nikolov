@@ -39,7 +39,11 @@ const About: React.FC = () => {
 
   //Scroll to top handler
   const scrollToTop = () => {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
+    if ("scrollBehavior" in document.documentElement.style) {
+      topRef.current?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.scrollTo(0, 0);
+    }
   };
   return (
     <Wrapper ref={topRef}>

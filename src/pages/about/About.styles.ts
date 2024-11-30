@@ -86,6 +86,6 @@ export const CertifcatesWrapper = styled.div`
   }
 `;
 export const Footer = styled.div`
-  padding-bottom: 3.5em;
+  padding-left: 3em;
   position: relative;
 `;

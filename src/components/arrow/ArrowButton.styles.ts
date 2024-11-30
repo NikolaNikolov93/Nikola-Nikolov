@@ -12,7 +12,7 @@ export const ArrowPlaceholder = styled(motion(Link))<ArrowProps>`
   align-items: center;
   justify-content: center;
   bottom: 0;
-  left: 22px;
+  left: 0;
   width: 45px;
   height: 45px;
   background-color: ${({ theme }) => theme.divider};
