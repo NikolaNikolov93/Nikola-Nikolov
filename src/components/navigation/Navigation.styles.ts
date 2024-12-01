@@ -11,7 +11,7 @@ export const StyledNavigation = styled.nav`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  height: 80vh;
+  height: 80dvh;
   padding: 1em;
 `;
 

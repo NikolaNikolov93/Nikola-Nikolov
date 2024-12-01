@@ -32,7 +32,7 @@ export const StyledLink = styled(Link)`
 
 export const StyledImgDiv = styled.div<$StyledDivProps>`
   position: relative;
-  height: 50vh;
+  height: 50dvh;
   background-image: url(${(props) => props.$url});
   background-size: cover;
   background-repeat: no-repeat;
@@ -41,20 +41,21 @@ export const StyledImgDiv = styled.div<$StyledDivProps>`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  z-index: 2; /* Ensure it's above the overlay */
+  z-index: 2;
 
   h3,
   ${StyledLink} {
-    z-index: 3; /* Ensure text is above the overlay */
-    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Adds depth */
+    z-index: 3;
+    text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     color: ${({ theme }) => theme.textPrimary};
-    opacity: 0; /* Use opacity for smooth fade-in */
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for appearance */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
     text-align: center;
     border: none;
   }
 
-  &::before {
+  &::before,
+  in-view & {
     content: "";
     position: absolute;
     top: 0;
@@ -63,8 +64,8 @@ export const StyledImgDiv = styled.div<$StyledDivProps>`
     right: 0;
     background-color: ${({ theme }) => theme.divider};
     z-index: 1;
-    opacity: 0; /* Use opacity for smooth fade-in */
-    transition: opacity 0.5s ease-in-out; /* Smooth transition for appearance */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
   }
   &:hover {
     h3 {
@@ -79,6 +80,24 @@ export const StyledImgDiv = styled.div<$StyledDivProps>`
     ${StyledLink} {
       display: block;
       opacity: 1;
+    }
+  }
+  @media (max-width: 766px) {
+    &.in-view {
+      h3 {
+        display: block;
+        opacity: 1;
+      }
+
+      &::before {
+        display: block;
+        opacity: 1;
+      }
+
+      ${StyledLink} {
+        display: block;
+        opacity: 1;
+      }
     }
   }
 `;

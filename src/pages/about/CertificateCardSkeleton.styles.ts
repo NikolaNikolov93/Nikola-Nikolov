@@ -6,7 +6,7 @@ export const CertificateCardSkeletonDiv = styled(motion.div)`
   transition: ease 0.4s;
   border-radius: 40px;
   overflow: hidden;
-  height: 50vh;
+  height: 50dvh;
   background-color: ${({ theme }) => theme.divider};
   opacity: 0.3;
   @media (min-width: 100px) and (max-width: 767px) {

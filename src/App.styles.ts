@@ -19,7 +19,7 @@ export const AppContainer = styled.div<{ theme: DefaultTheme }>`
 export const MainSection = styled.section`
   max-width: 1440px;
   margin: auto;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   overflow-y: auto;
   padding: 2em;
@@ -27,7 +27,7 @@ export const MainSection = styled.section`
 export const AppStaticSection = styled.section`
   position: sticky;
   top: 0;
-  width: 30vw;
+  width: 25dvw;
   padding: 2em;
   @media (max-width: 800px) {
     text-align: start;
@@ -42,10 +42,10 @@ export const AppStaticSection = styled.section`
   }
 `;
 export const AppDynamicSection = styled.section`
-  width: 70vw;
+  width: 70dvw;
   padding: 2em;
   @media (max-width: 600px) {
-    width: 100vw;
+    width: 100dvw;
   }
 `;
 export const SidebarButton = styled.button<SideBaroButtonProps>`
