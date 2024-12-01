@@ -33,7 +33,7 @@ const About: React.FC = () => {
   const topRef = useRef<HTMLDivElement>(null);
 
   //Fetch data using the custom hook with React Query implementation.
-  const { isPending, error, data } = useFetchCertificates();
+  const { isLoading, isPending, error, data } = useFetchCertificates();
 
   //Scroll to bottom handler
 
@@ -73,7 +73,7 @@ const About: React.FC = () => {
           ))}
         </ul>
       </AboutWrapper>
-      {isPending && <h2>Loading certificates...</h2>}
+      {isLoading && <h2>Loading certificates...</h2>}
       <CertifcatesWrapper>
         {isPending && (
           <>

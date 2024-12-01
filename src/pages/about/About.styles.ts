@@ -28,7 +28,7 @@ export const AboutWrapper = styled.div`
     gap: 1em;
     overflow-x: hidden;
   }
-  @media (max-width: 760px) {
+  @media (max-width: 910px) {
     &::after {
       display: none;
     }
@@ -40,7 +40,7 @@ export const ListItem = styled(motion.li)`
   gap: 1em;
   height: auto;
   align-items: center;
-
+  flex: 1 1 100%;
   span {
     color: ${({ theme }) => theme.accentSecondary};
   }
@@ -52,7 +52,7 @@ export const ListItem = styled(motion.li)`
   &:nth-child(even) {
     flex-direction: row-reverse;
   }
-  @media (max-width: 760px) {
+  @media (max-width: 910px) {
     &:nth-child(odd) {
       flex-direction: column;
     }
@@ -69,9 +69,8 @@ export const ListP = styled(motion.p)`
 export const ListImg = styled(motion.img)`
   flex-basis: calc((100% - 1em) / 2);
   height: auto;
-  width: 100%;
   max-width: 100%;
-  max-height: 45vh;
+  max-height: 45dvh;
   object-fit: cover;
   object-position: top;
   border-radius: 40px;
