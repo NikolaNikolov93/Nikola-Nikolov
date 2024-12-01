@@ -20,6 +20,12 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
       whileTap={{
         scale: 0.8,
       }}
+      initial={{ scale: 1 }}
+      animate={{ scale: [1.1, 1.3, 1] }}
+      transition={{
+        duration: 1.5,
+        repeat: Infinity,
+      }}
     >
       <Arrow
         $isUp={$isUp}
