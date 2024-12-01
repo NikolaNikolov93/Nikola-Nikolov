@@ -54,8 +54,7 @@ export const StyledImgDiv = styled.div<$StyledDivProps>`
     border: none;
   }
 
-  &::before,
-  in-view & {
+  &::before {
     content: "";
     position: absolute;
     top: 0;
@@ -80,24 +79,6 @@ export const StyledImgDiv = styled.div<$StyledDivProps>`
     ${StyledLink} {
       display: block;
       opacity: 1;
-    }
-  }
-  @media (max-width: 766px) {
-    &.in-view {
-      h3 {
-        display: block;
-        opacity: 1;
-      }
-
-      &::before {
-        display: block;
-        opacity: 1;
-      }
-
-      ${StyledLink} {
-        display: block;
-        opacity: 1;
-      }
     }
   }
 `;
