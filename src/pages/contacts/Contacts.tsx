@@ -11,18 +11,58 @@ import {
   Input,
   Textarea,
 } from "./Contacts.styles";
-import { sanitizeInput, validateForm } from "../../lib/utility/formUtils";
+import {
+  handleInputChange,
+  sanitizeInput,
+  validateForm,
+} from "../../lib/utility/formUtils";
+import { AnimatePresence } from "motion/react";
 
 /**
  *
  * @returns React functional component
  */
 const Contacts: React.FC = () => {
+  //Form reference
   const form = useRef<HTMLFormElement>(null);
+
+  //EmailJs public key
   const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+  //Initial Form message and form message status to handle inputs validation and provide live response for the user
   const [formMessage, setFormMessage] = useState<string | null>(null);
 
+  //Form message status is used to change the color of the message based on the status
+  const [formMessageStatus, setFormMessageStatus] = useState<
+    "success" | "error" | undefined
+  >(undefined);
+
+  const messageTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  /**
+   *
+   * @param type strings that represents the input type to get the correct messages for the input filed
+   * @param value value of the inputfield
+   */
+  const handleChange = (type: string, value: string) => {
+    let msg = handleInputChange(type, value);
+    setFormMessageStatus(msg === "Valid input" ? "success" : "error");
+    setFormMessage(msg);
+
+    if (messageTimeout.current) {
+      clearTimeout(messageTimeout.current);
+    }
+    messageTimeout.current = setTimeout(() => {
+      setFormMessage(null);
+      setFormMessageStatus(undefined);
+    }, 5000);
+  };
+
+  /**
+   *
+   * @param e Form Data
+   * @returns Returns form message to give the user feedback of the request that was sent.
+   */
   const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -37,6 +77,8 @@ const Contacts: React.FC = () => {
       //Throw error if validation fails
       if (validationError) {
         setFormMessage(validationError);
+        setFormMessageStatus("error");
+
         return;
       }
       //Sent email with validated data
@@ -50,6 +92,7 @@ const Contacts: React.FC = () => {
           }
         );
         setFormMessage("Message sent successfully");
+        setFormMessageStatus("success");
         form.current.reset();
 
         //Email sending error handling
@@ -57,13 +100,16 @@ const Contacts: React.FC = () => {
         // Narrow the type of `error` to properly access its properties
         if (error instanceof Error) {
           setFormMessage(`Failed to send: ${error.message}`);
+          setFormMessageStatus("error");
         } else {
           setFormMessage("An unexpected error occurred.");
+          setFormMessageStatus("error");
         }
       } finally {
         // Clear the message after 5 seconds
         setTimeout(() => {
           setFormMessage(null);
+          setFormMessageStatus(undefined);
         }, 5000);
       }
     } else {
@@ -84,6 +130,7 @@ const Contacts: React.FC = () => {
           placeholder="Your Name"
           required
           maxLength={50}
+          onChange={(e) => handleChange("username", e.target.value)}
         />
         <Input
           type="email"
@@ -91,17 +138,31 @@ const Contacts: React.FC = () => {
           placeholder="Your Email"
           required
           maxLength={254}
+          onChange={(e) => handleChange("email", e.target.value)}
         />
         <Textarea
           name="message"
           placeholder="message"
           required
           maxLength={1500}
+          onChange={(e) => handleChange("message", e.target.value)}
         />
         <ButtonWrapper>
           <Button type="submit">Send Message</Button>
         </ButtonWrapper>
-        {formMessage && <FormMessage>{formMessage}</FormMessage>}
+        <AnimatePresence>
+          {formMessage && (
+            <FormMessage
+              status={formMessageStatus}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.5 }}
+            >
+              {formMessage}
+            </FormMessage>
+          )}
+        </AnimatePresence>
       </ContactForm>
     </ContactsContainer>
   );

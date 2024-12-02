@@ -59,3 +59,8 @@ export type UserType = {
   lastName: string;
   secondName: string;
 };
+
+//FormMessageProps
+export type FormMessageProps = {
+  status?: "success" | "error";
+};

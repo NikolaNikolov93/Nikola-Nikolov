@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FormMessageProps } from "../../lib/types/types";
+import { motion } from "motion/react";
 
 export const ContactsContainer = styled.section`
   display: flex;
@@ -83,6 +85,9 @@ export const Input = styled.input`
   color: ${({ theme }) => theme.textPrimary};
   background-color: ${({ theme }) => theme.divider};
   border-color: ${({ theme }) => theme.textPrimary};
+  &:focus {
+    outline-color: ${({ theme }) => theme.accentSecondary};
+  }
   @media (max-width: 600px) {
     flex-basis: 100%;
   }
@@ -99,6 +104,9 @@ export const Textarea = styled.textarea`
   height: 150px;
   resize: vertical;
   flex: 1 1 100%;
+  &:focus {
+    outline-color: ${({ theme }) => theme.accentSecondary};
+  }
 `;
 export const ButtonWrapper = styled.div`
   flex-basis: 100%;
@@ -118,6 +126,16 @@ export const Button = styled.button`
     background-color: #0056b3;
   }
 `;
-export const FormMessage = styled.p`
-  color: ${({ theme }) => theme.accentSecondary};
+
+export const FormMessage = styled(motion.p)<FormMessageProps>`
+  color: ${
+    ({ status, theme }) =>
+      status === "success"
+        ? "#28a745" /* A vibrant but softer green */
+        : status === "error"
+        ? theme.accentSecondary
+        : "#dc3545" /* Refined red for error */
+  };
+  font-weight: bold;
+  text-shadow: 2px 2px 5px black;
 `;
