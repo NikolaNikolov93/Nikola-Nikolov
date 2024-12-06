@@ -14,28 +14,16 @@ const ArrowButton: React.FC<ArrowButtonProps> = ({
     <ArrowPlaceholder
       $isUp={$isUp}
       onClick={scrollToSection}
-      whileHover={{
-        scale: 1.1,
+      initial={{ x: 100 }}
+      animate={{
+        x: 0,
       }}
-      whileTap={{
-        scale: 0.8,
-      }}
-      initial={{ scale: 1 }}
-      animate={{ scale: [1.1, 1.3, 1] }}
-      transition={{
-        duration: 1.5,
-        repeat: Infinity,
-      }}
+      transition={{ duration: 0.5 }}
+      exit={{ x: 100 }}
+      whileTap={{ scale: 0.8 }}
+      whileHover={{ scale: 1.2 }}
     >
-      <Arrow
-        $isUp={$isUp}
-        initial={{ y: 0, opacity: 1, scale: 1 }}
-        animate={{ y: $isUp ? -10 : 10, opacity: [0, 1, 0], scale: 1.1 }}
-        transition={{
-          duration: 1.3,
-          repeat: Infinity,
-        }}
-      >
+      <Arrow $isUp={$isUp}>
         {$isUp ? <IoIosArrowUp /> : <IoIosArrowDown />}
       </Arrow>
     </ArrowPlaceholder>

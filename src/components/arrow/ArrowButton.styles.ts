@@ -11,12 +11,14 @@ export const ArrowPlaceholder = styled(motion(Link))<ArrowProps>`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  top: 0;
-  left: 0;
+  top: 50px;
+  right: 20px;
   width: 45px;
   height: 45px;
   background-color: ${({ theme }) => theme.divider};
   border-radius: 50px;
+  z-index: 100;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.8);
 `;
 export const Arrow = styled(motion.div)<ArrowProps>`
   color: ${({ theme }) => theme.textPrimary};

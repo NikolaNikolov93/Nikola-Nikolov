@@ -1,6 +1,6 @@
 //React imports
 import { Route, Routes } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 //React iconst imports
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -33,6 +33,8 @@ import Certificate from "./pages/certificate/Certificate";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import PageNotFound from "./pages/404/NotFound";
 import { useSwipeable } from "react-swipeable";
+import ArrowButton from "./components/arrow/ArrowButton";
+import { AnimatePresence } from "motion/react";
 
 /**
  *
@@ -48,6 +50,9 @@ function App() {
   //Sets the state for the mobile Sidebar(Closed by default)
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Button visibility state
+  const [showArrowButton, setShowArrowButton] = useState(false);
+
   //Toggles between the Sidebar states
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -61,6 +66,32 @@ function App() {
     preventScrollOnSwipe: true, // Prevent scrolling while swiping
   });
 
+  //Ref for top element
+  const topRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTop = () => {
+    topRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  const dynamicSectionRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (dynamicSectionRef.current) {
+        if (dynamicSectionRef.current?.scrollTop > 800) {
+          setShowArrowButton(true);
+        } else {
+          setShowArrowButton(false);
+        }
+      }
+    };
+    const scrollableElement = dynamicSectionRef.current;
+    scrollableElement?.addEventListener("scroll", handleScroll);
+
+    // Cleanup on unmount
+    return () => {
+      scrollableElement?.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
       <QueryClientProvider client={queryClient}>
@@ -69,7 +100,13 @@ function App() {
             <AppStaticSection>
               <Navigation />
             </AppStaticSection>
-            <AppDynamicSection {...swipeHandlers}>
+            <AppDynamicSection {...swipeHandlers} ref={dynamicSectionRef}>
+              <div ref={topRef}></div>
+              <AnimatePresence>
+                {showArrowButton && (
+                  <ArrowButton $isUp={true} scrollToSection={scrollToTop} />
+                )}
+              </AnimatePresence>
               <Routes>
                 <Route path={"/"} element={<Home />} />
                 <Route path="/about" element={<About />} />

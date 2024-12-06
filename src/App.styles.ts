@@ -9,7 +9,7 @@ export const AppContainer = styled.div<{ theme: DefaultTheme }>`
   ::-webkit-scrollbar {
     display: none;
   }
-
+  overflow-y: auto;
   /* Hide scrollbar for Firefox */
   scrollbar-width: none;
 
@@ -21,7 +21,6 @@ export const MainSection = styled.section`
   margin: auto;
   height: 100dvh;
   display: flex;
-  overflow-y: auto;
   padding: 2em;
 `;
 export const AppStaticSection = styled.section`
