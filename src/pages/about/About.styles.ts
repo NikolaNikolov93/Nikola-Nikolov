@@ -87,4 +87,28 @@ export const CertifcatesWrapper = styled.div`
 export const Footer = styled.div`
   padding-left: 3em;
   position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2em;
+
+  img {
+    object-fit: contain;
+    object-position: center;
+  }
+`;
+export const FooterStyledA = styled(motion.a)`
+  padding: 10px 20px;
+  background-color: ${({ theme }) => theme.accentSecondary};
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  transition: background-color 0.3s;
+  margin-bottom: 1em;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.accentPrimary};
+  }
 `;
