@@ -1,3 +1,5 @@
+import { Timestamp } from "firebase/firestore";
+
 //Sidebar props type
 export type SidebarProps = {
   $isOpen: boolean;
@@ -51,7 +53,7 @@ export type infoPair = {
 //User Type
 export type UserType = {
   age: number;
-  birthDate?: Date;
+  birthDate?: Timestamp;
   birthYear: string;
   city: string;
   country: string;

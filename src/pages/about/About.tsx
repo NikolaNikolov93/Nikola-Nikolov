@@ -28,12 +28,7 @@ import CertificateCardSkeleton from "./CertificateCardSkeleton";
 const About = () => {
   //Fetch data using the custom hook with React Query implementation.
   const { isLoading, isPending, error, data } = useFetchCertificates();
-  const {
-    data: userData,
-    isPending: isUserDataPending,
-    error: isUserDataError,
-    isLoading: isUserDataLoading,
-  } = useFetchUser();
+  const { data: userData } = useFetchUser();
 
   return (
     <Wrapper>
