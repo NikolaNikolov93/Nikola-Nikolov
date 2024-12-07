@@ -90,9 +90,15 @@ export const Footer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2em;
-
+  align-items: center;
+  gap: 1em;
+  p {
+    flex-basis: calc((100% - 1em) / 2);
+    padding: 0;
+  }
   img {
+    flex-basis: calc((100% - 1em) / 2);
+
     object-fit: contain;
     object-position: center;
   }
