@@ -1,23 +1,27 @@
 //Imports from styled-components
 import styled from "styled-components";
 
+export const HomeWrapper = styled.div`
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const HomeContentContainer = styled.section`
   display: flex;
-  flex-wrap: wrap;
   gap: 1em;
   padding: 1em;
 
-  @media (min-width: 481px) and (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-direction: column;
   }
 `;
 
 export const HomeContainerElement = styled.div`
-  flex-basis: 100%;
-
-  @media (min-width: 481px) {
-    flex-basis: calc((100% - 1em) / 2);
-  }
+  flex-basis: calc((100% - 1em) / 2);
 `;
 
 export const StyledImg = styled(HomeContainerElement)``;
