@@ -25,13 +25,13 @@ export const ContactsContainer = styled.section`
   @media (max-width: 800px) {
     text-align: center;
     h1 {
-      font-size: 1.75em;
+      font-size: 1.65em;
     }
     h2 {
-      font-size: 1.5em;
+      font-size: 1.3em;
     }
     h3 {
-      font-size: 1.25em;
+      font-size: 1.2em;
     }
   }
   @media (max-width: 600px) {
@@ -50,13 +50,13 @@ export const ContactsContainer = styled.section`
     padding: 0.5em; /* Reduce padding for small screens */
     text-align: center;
     h1 {
-      font-size: 1.3em;
-    }
-    h2 {
       font-size: 1.1em;
     }
+    h2 {
+      font-size: 0.9em;
+    }
     h3 {
-      font-size: 0.9;
+      font-size: 0.7em;
     }
   }
 `;
@@ -70,6 +70,7 @@ export const ContactForm = styled.form`
   justify-content: space-around;
   gap: 1em;
   max-width: 600px;
+  width: 100%;
   margin: 0 auto;
   padding: 1em;
   border: 1px solid #ccc;
